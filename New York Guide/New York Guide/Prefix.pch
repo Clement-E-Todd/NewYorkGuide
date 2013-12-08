@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'New York Guide' target in the 'New York Guide' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+#endif
