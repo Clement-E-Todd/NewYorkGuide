@@ -87,6 +87,16 @@ protected:
      */
     cocos2d::CCPoint getAnchorPointFromLocation(cocos2d::CCPoint location);
     
+    /**
+     @brief     Keep the map from going too far outside of its positional and scaling limitations.
+     */
+    void applyTransformLimitationsToMap();
+    
+    /**
+     @brief     If the map is outside of its boundaries, snap it back smoothly.
+     */
+    void snapMapToTransformLimitations();
+    
 private:
     
     // The node which is manipulated by the MapNavigator.
