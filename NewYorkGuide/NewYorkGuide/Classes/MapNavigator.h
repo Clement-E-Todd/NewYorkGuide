@@ -40,6 +40,20 @@ public:
      */
     void ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     
+    /**
+     @brief     Respond to the end of a user's touch.
+     @param     pTouch      A pointer to the touch information.
+     @param     pEvent      The event data.
+     */
+    void ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+    
+    /**
+     @brief     Respond to a user's touch input being lost.
+     @param     pTouch      A pointer to the touch information.
+     @param     pEvent      The event data.
+     */
+    void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
+    
 protected:
     
     /**
@@ -56,10 +70,16 @@ protected:
     
 private:
     
+    // The node which is manipulated by the MapNavigator.
     cocos2d::CCNode* m_MapNode;
     
+    // Pointers to the touch input data (we only care about 2 touches at once, so that's all we store).
+    cocos2d::CCTouch* m_Touches[2];
+    
+    // Positional data used to calculate panning and zooming.
     cocos2d::CCPoint m_MapNodeStartPosition;
-    cocos2d::CCPoint m_TouchStartPosition;
+    float m_MapNodeStartScale;
+    cocos2d::CCPoint m_TouchStartPositions[2];
 };
 
 #endif // MAP_NAVIGATOR_H

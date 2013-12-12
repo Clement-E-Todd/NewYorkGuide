@@ -44,6 +44,9 @@ static AppDelegate s_sharedApplication;
     [window addSubview: viewController.view];
     [window makeKeyAndVisible];
 
+    // Enable multi-touch
+    [viewController.view setMultipleTouchEnabled:YES];
+    
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
 
     cocos2d::CCApplication::sharedApplication()->run();
