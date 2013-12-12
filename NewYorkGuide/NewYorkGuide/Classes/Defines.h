@@ -14,4 +14,9 @@
  */
 #define WIN_SIZE cocos2d::CCDirector::sharedDirector()->getWinSize()
 
+/**
+ * Whether or not messages related to touch input should be displayed in the console.
+ */
+#define DISPLAY_TOUCH_MESSAGES false
+
 #endif // DEFINES_H

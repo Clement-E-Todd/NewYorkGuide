@@ -7,6 +7,7 @@
 //
 
 #include "MapNavigator.h"
+#include "Defines.h"
 
 using namespace cocos2d;
 
@@ -58,16 +59,13 @@ void MapNavigator::onExit()
 bool MapNavigator::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
     // If we aren't already tracking 2 touches, track this one. Otherwise ignore this touch.
-    unsigned char touchID;
     if (!m_Touches[0])
     {
         m_Touches[0] = pTouch;
-        touchID = 0;
     }
     else if (!m_Touches[1])
     {
         m_Touches[1] = pTouch;
-        touchID = 1;
     }
     else
     {
@@ -75,19 +73,21 @@ bool MapNavigator::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     }
     
     // If we are only tracking one touch, set up for panning logic.
-    if ((m_Touches[0] && !m_Touches[1]) || (!m_Touches[0] && m_Touches[1]))
+    if (setUpForPanning())
     {
-        m_MapNodeStartPosition = m_MapNode->getPosition();
-        m_TouchStartPositions[touchID] = m_Touches[touchID]->getLocation();
+        if (DISPLAY_TOUCH_MESSAGES)
+        {
+            CCLOG("New touch detected and being used for panning.");
+        }
     }
     
     // If we are tracking two touches, set up for zooming logic.
-    else if (m_Touches[0] && m_Touches[1])
+    else if (setUpForZooming())
     {
-        m_MapNodeStartPosition = m_MapNode->getPosition();
-        m_MapNodeStartScale = m_MapNode->getScale();
-        m_TouchStartPositions[0] = m_Touches[0]->getLocation();
-        m_TouchStartPositions[1] = m_Touches[1]->getLocation();
+        if (DISPLAY_TOUCH_MESSAGES)
+        {
+            CCLOG("New touch detected and being used for zooming in combination with the previous touch.");
+        }
     }
     
     return true;
@@ -142,12 +142,20 @@ void MapNavigator::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEve
         m_Touches[1] = NULL;
     }
     
-    // If we are still tracking another touch, set up for panning logic.
-    if ((m_Touches[0] && !m_Touches[1]) || (!m_Touches[0] && m_Touches[1]))
+    // In the event that we are still tracking another touch, set up to use it for panning.
+    if (setUpForPanning())
     {
-        unsigned char touchID = m_Touches[0] ? 0 : 1;
-        m_MapNodeStartPosition = m_MapNode->getPosition();
-        m_TouchStartPositions[touchID] = m_Touches[touchID]->getLocation();
+        if (DISPLAY_TOUCH_MESSAGES)
+        {
+            CCLOG("A touch ended, and the remaining touch is now being used for panning.");
+        }
+    }
+    else
+    {
+        if (DISPLAY_TOUCH_MESSAGES)
+        {
+            CCLOG("All recorded touches have ended.");
+        }
     }
 }
 
@@ -158,5 +166,70 @@ void MapNavigator::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEve
  */
 void MapNavigator::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
+    // End the lost touch the same way we would normally end a touch.
     ccTouchEnded(pTouch, pEvent);
+}
+
+/**
+ @brief     Record any necessary information in anticipation of panning.
+ @return    Whether or not the conditions for panning were met; this method will only succeed if we are tracking exactly one touch.
+ */
+bool MapNavigator::setUpForPanning()
+{
+    // We must be tracking one and only one touch for this method to succeed, so return immediately otherwise.
+    if ((m_Touches[0] && m_Touches[1]) || (!m_Touches[0] && !m_Touches[1]))
+    {
+        return false;
+    }
+    
+    // Record all information required for the panning logic.
+    unsigned char touchID = m_Touches[0] ? 0 : 1;
+    m_MapNodeStartPosition = m_MapNode->getPosition();
+    m_TouchStartPositions[touchID] = m_Touches[touchID]->getLocation();
+    
+    return true;
+}
+
+/**
+ @brief     Record any necessary information in anticipation of zooming.
+ @return    Whether or not the conditions for zooming were met; this method will only succeed if we are tracking two touches.
+ */
+bool MapNavigator::setUpForZooming()
+{
+    // We must be tracking two touches for this method to succeed, so return immediately otherwise.
+    if (!m_Touches[0] || !m_Touches[1])
+    {
+        return false;
+    }
+    
+    // Move the anchor point of the map directly between the user's fingers so that zooming occurs in and out of that point.
+    CCPoint oldAnchorPoint = m_MapNode->getAnchorPoint();
+    m_MapNode->setAnchorPoint(getAnchorPointFromLocation(ccpMidpoint(m_Touches[0]->getLocation(), m_Touches[1]->getLocation())));
+    
+    // Adjust the position of the map to avoid an awkward jerk after changing the anchor point.
+    m_MapNode->setPosition(ccpAdd(m_MapNode->getPosition(),
+                                  ccpSub(ccp(m_MapNode->getContentSize().width * m_MapNode->getScale() * m_MapNode->getAnchorPoint().x,
+                                             m_MapNode->getContentSize().height * m_MapNode->getScale() * m_MapNode->getAnchorPoint().y),
+                                         ccp(m_MapNode->getContentSize().width * m_MapNode->getScale() * oldAnchorPoint.x,
+                                             m_MapNode->getContentSize().height * m_MapNode->getScale() * oldAnchorPoint.y))));
+    
+    // Record all information required for the zooming logic.
+    m_MapNodeStartPosition = m_MapNode->getPosition();
+    m_MapNodeStartScale = m_MapNode->getScale();
+    m_TouchStartPositions[0] = m_Touches[0]->getLocation();
+    m_TouchStartPositions[1] = m_Touches[1]->getLocation();
+    
+    return true;
+}
+
+/**
+ @brief     Translate a point on-screen (for example, a touch location) into an anchor point for the map node.
+ @param     location    The on-screen position to be translated.
+ @return    The resulting anchor point.
+ */
+CCPoint MapNavigator::getAnchorPointFromLocation(CCPoint location)
+{
+    CCPoint anchorPoint = m_MapNode->convertToNodeSpace(location);
+    anchorPoint = ccp(anchorPoint.x / m_MapNode->getContentSize().width, anchorPoint.y / m_MapNode->getContentSize().height);
+    return anchorPoint;
 }

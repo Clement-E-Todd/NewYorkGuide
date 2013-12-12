@@ -68,6 +68,25 @@ protected:
      */
     void onExit();
     
+    /**
+     @brief     Record any necessary information in anticipation of panning.
+     @return    Whether or not the conditions for panning were met; this method will only succeed if we are tracking exactly one touch.
+     */
+    bool setUpForPanning();
+    
+    /**
+     @brief     Record any necessary information in anticipation of zooming.
+     @return    Whether or not the conditions for zooming were met; this method will only succeed if we are tracking two touches.
+     */
+    bool setUpForZooming();
+    
+    /**
+     @brief     Translate a point on-screen (for example, a touch location) into an anchor point for the map node.
+     @param     location    The on-screen position to be translated.
+     @return    The resulting anchor point.
+     */
+    cocos2d::CCPoint getAnchorPointFromLocation(cocos2d::CCPoint location);
+    
 private:
     
     // The node which is manipulated by the MapNavigator.
