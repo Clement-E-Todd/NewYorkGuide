@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AA18A3DC-F58B-4F70-8A98-86125C74D5DB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>NewYorkGuide</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D2694E17-69DC-441A-8612-D8531BFD02BC</key>
+		<string>https://github.com/Clement-E-Todd/NewYorkGuide.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ios/NewYorkGuide.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D2694E17-69DC-441A-8612-D8531BFD02BC</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Clement-E-Todd/NewYorkGuide.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D2694E17-69DC-441A-8612-D8531BFD02BC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D2694E17-69DC-441A-8612-D8531BFD02BC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>new-york-guide</string>
+		</dict>
+	</array>
+</dict>
+</plist>

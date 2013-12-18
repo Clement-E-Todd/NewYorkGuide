@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CBC833E1-402F-47D0-84FB-E94F5C5311D3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>EmpireCasinoProject</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E59F31B0-23CF-40D2-A979-826613B605AA</key>
+		<string>ssh://git.arcticempire.ca/company/project-templates.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Empire Casino/Empire Casino Project/ios/EmpireCasinoProject.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>12F81DC4-1287-4F68-B301-BCA107AD27B6</key>
+		<string>../../../framework-module</string>
+		<key>E59F31B0-23CF-40D2-A979-826613B605AA</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://git.arcticempire.ca/company/project-templates.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E59F31B0-23CF-40D2-A979-826613B605AA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>12F81DC4-1287-4F68-B301-BCA107AD27B6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>framework-module</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E59F31B0-23CF-40D2-A979-826613B605AA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Templates</string>
+		</dict>
+	</array>
+</dict>
+</plist>
