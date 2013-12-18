@@ -1,69 +1,66 @@
 //
-//  MapNavigator.cpp
+//  Map.cpp
 //  NewYorkGuide
 //
 //  Created by Clement Todd on 2013-12-11.
 //
 //
 
-#include "MapNavigator.h"
+#include "Map.h"
 #include "Defines.h"
 
 using namespace cocos2d;
 
-#define MIN_SCALE   ((WIN_SIZE.width / m_MapNode->getContentSize().width) * 2)
+#define MIN_SCALE   ((WIN_SIZE.width / getContentSize().width) * 2)
 #define MAX_SCALE   (1.5f)
 
 /**
- @brief     Create an MapNavigator instance with a target map node.
- @param     mapNode     The map which should be manipulated by the navigator.
- @return    A pointer to the newly created MapNavigator.
+ @brief     Create a Map instance with a target map node.
+ @param     mapNode     The node which visually represents the map.
+ @return    A pointer to the newly created Map.
  */
-MapNavigator* MapNavigator::create(CCNode* mapNode)
+Map* Map::create(CCNode* mapNode)
 {
-    MapNavigator *mapNavigator = new MapNavigator();
-    if (mapNavigator && mapNavigator->init(mapNode))
+    Map *map = new Map();
+    if (map && map->init(mapNode))
     {
-        mapNavigator->autorelease();
-        return mapNavigator;
+        map->autorelease();
+        return map;
     }
-    CC_SAFE_DELETE(mapNavigator);
+    CC_SAFE_DELETE(map);
     return NULL;
 }
 
 /**
- @brief     Initialize the map navigator with its target map node.
- @param     mapNode     The map which should be manipulated by the navigator.
+ @brief     Initialize the map with its target map node.
+ @param     mapNode     The node which visually represents the map.
  @return    Whether or not the initialization was successful.
  */
-bool MapNavigator::init(CCNode *mapNode)
+bool Map::init(CCNode *mapNode)
 {
     // Listen for touch events.
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, false);
     
-    // Set the map node and its default scale.
+    // Register and add the map node
     m_MapNode = mapNode;
-    mapNode->setScale((MIN_SCALE + MAX_SCALE) / 2);
+    addChild(m_MapNode);
+    
+    // Set the default spacial information for both the map and map node
+    setContentSize(m_MapNode->getContentSize());
+    setAnchorPoint(m_MapNode->getAnchorPoint());
+    m_MapNode->setPosition(ccp(getContentSize().width * getAnchorPoint().x, getContentSize().height * getAnchorPoint().y));
+    setScale((MIN_SCALE + MAX_SCALE) / 2);
     
     return m_MapNode;
-}
-
-/**
- @brief     Called when the map navigator is removed from the node tree.
- */
-void MapNavigator::onExit()
-{
-    CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
-    CCNode::onExit();
 }
 
 /**
  @brief     Respond to the beginning of a user's touch.
  @param     pTouch      A pointer to the touch information.
  @param     pEvent      The event data.
- @return    Whether or not the map navigator accepted the touch input.
+ @return    Whether or not the map accepted the touch input.
  */
-bool MapNavigator::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
+bool Map::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
     // If we aren't already tracking 2 touches, track this one. Otherwise ignore this touch.
     if (!m_Touches[0])
@@ -80,7 +77,7 @@ bool MapNavigator::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     }
     
     // Cancel any CCActions currently being run to give the appearance that the user's finger is holding the map still.
-    m_MapNode->stopAllActions();
+    stopAllActions();
     
     // If we are only tracking one touch, set up for panning logic.
     if (setUpForPanning())
@@ -108,14 +105,14 @@ bool MapNavigator::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
  @param     pTouch      A pointer to the touch information.
  @param     pEvent      The event data.
  */
-void MapNavigator::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
+void Map::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
     // If we are only tracking one touch then pan the map based on the touch position.
     if ((m_Touches[0] && !m_Touches[1]) || (!m_Touches[0] && m_Touches[1]))
     {
         // Move the map to its new position.
         unsigned char touchID = m_Touches[0] ? 0 : 1;
-        m_MapNode->setPosition(ccpAdd(m_MapNodeStartPosition, ccpSub(m_Touches[touchID]->getLocation(), m_TouchStartPositions[touchID])));
+        setPosition(ccpAdd(m_MapNodeStartPosition, ccpSub(m_Touches[touchID]->getLocation(), m_TouchStartPositions[touchID])));
         
         // Apply limits to the map's position.
         applyTransformLimitationsToMap();
@@ -130,12 +127,12 @@ void MapNavigator::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
         float scaleFactor = currentDistance / originalDistance;
         
         // Scale the map based on the value we just calculated.
-        m_MapNode->setScale(m_MapNodeStartScale * scaleFactor);
+        setScale(m_MapNodeStartScale * scaleFactor);
         
         // Also pan the view based on the midpoint of the two touches.
         CCPoint originalMidpoint = ccpMidpoint(m_TouchStartPositions[0], m_TouchStartPositions[1]);
         CCPoint currentMidpoint = ccpMidpoint(m_Touches[0]->getLocation(), m_Touches[1]->getLocation());
-        m_MapNode->setPosition(ccpAdd(m_MapNodeStartPosition, ccpSub(currentMidpoint, originalMidpoint)));
+        setPosition(ccpAdd(m_MapNodeStartPosition, ccpSub(currentMidpoint, originalMidpoint)));
         
         // Apply limits to the map's position and scale.
         applyTransformLimitationsToMap();
@@ -147,7 +144,7 @@ void MapNavigator::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
  @param     pTouch      A pointer to the touch information.
  @param     pEvent      The event data.
  */
-void MapNavigator::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+void Map::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     // Clear this touch from our tracked touches.
     if (pTouch == m_Touches[0])
@@ -185,7 +182,7 @@ void MapNavigator::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEve
  @param     pTouch      A pointer to the touch information.
  @param     pEvent      The event data.
  */
-void MapNavigator::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
+void Map::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     // End the lost touch the same way we would normally end a touch.
     ccTouchEnded(pTouch, pEvent);
@@ -195,7 +192,7 @@ void MapNavigator::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *
  @brief     Record any necessary information in anticipation of panning.
  @return    Whether or not the conditions for panning were met; this method will only succeed if we are tracking exactly one touch.
  */
-bool MapNavigator::setUpForPanning()
+bool Map::setUpForPanning()
 {
     // We must be tracking one and only one touch for this method to succeed, so return immediately otherwise.
     if ((m_Touches[0] && m_Touches[1]) || (!m_Touches[0] && !m_Touches[1]))
@@ -205,7 +202,7 @@ bool MapNavigator::setUpForPanning()
     
     // Record all information required for the panning logic.
     unsigned char touchID = m_Touches[0] ? 0 : 1;
-    m_MapNodeStartPosition = m_MapNode->getPosition();
+    m_MapNodeStartPosition = getPosition();
     m_TouchStartPositions[touchID] = m_Touches[touchID]->getLocation();
     
     return true;
@@ -215,7 +212,7 @@ bool MapNavigator::setUpForPanning()
  @brief     Record any necessary information in anticipation of zooming.
  @return    Whether or not the conditions for zooming were met; this method will only succeed if we are tracking two touches.
  */
-bool MapNavigator::setUpForZooming()
+bool Map::setUpForZooming()
 {
     // We must be tracking two touches for this method to succeed, so return immediately otherwise.
     if (!m_Touches[0] || !m_Touches[1])
@@ -224,19 +221,19 @@ bool MapNavigator::setUpForZooming()
     }
     
     // Move the anchor point of the map directly between the user's fingers so that zooming occurs in and out of that point.
-    CCPoint oldAnchorPoint = m_MapNode->getAnchorPoint();
-    m_MapNode->setAnchorPoint(getAnchorPointFromLocation(ccpMidpoint(m_Touches[0]->getLocation(), m_Touches[1]->getLocation())));
+    CCPoint oldAnchorPoint = getAnchorPoint();
+    setAnchorPoint(getAnchorPointFromLocation(ccpMidpoint(m_Touches[0]->getLocation(), m_Touches[1]->getLocation())));
     
     // Adjust the position of the map to avoid an awkward jerk after changing the anchor point.
-    m_MapNode->setPosition(ccpAdd(m_MapNode->getPosition(),
-                                  ccpSub(ccp(m_MapNode->getContentSize().width * m_MapNode->getScale() * m_MapNode->getAnchorPoint().x,
-                                             m_MapNode->getContentSize().height * m_MapNode->getScale() * m_MapNode->getAnchorPoint().y),
-                                         ccp(m_MapNode->getContentSize().width * m_MapNode->getScale() * oldAnchorPoint.x,
-                                             m_MapNode->getContentSize().height * m_MapNode->getScale() * oldAnchorPoint.y))));
+    setPosition(ccpAdd(getPosition(),
+                                  ccpSub(ccp(getContentSize().width * getScale() * getAnchorPoint().x,
+                                             getContentSize().height * getScale() * getAnchorPoint().y),
+                                         ccp(getContentSize().width * getScale() * oldAnchorPoint.x,
+                                             getContentSize().height * getScale() * oldAnchorPoint.y))));
     
     // Record all information required for the zooming logic.
-    m_MapNodeStartPosition = m_MapNode->getPosition();
-    m_MapNodeStartScale = m_MapNode->getScale();
+    m_MapNodeStartPosition = getPosition();
+    m_MapNodeStartScale = getScale();
     m_TouchStartPositions[0] = m_Touches[0]->getLocation();
     m_TouchStartPositions[1] = m_Touches[1]->getLocation();
     
@@ -248,17 +245,17 @@ bool MapNavigator::setUpForZooming()
  @param     location    The on-screen position to be translated.
  @return    The resulting anchor point.
  */
-CCPoint MapNavigator::getAnchorPointFromLocation(CCPoint location)
+CCPoint Map::getAnchorPointFromLocation(CCPoint location)
 {
-    CCPoint anchorPoint = m_MapNode->convertToNodeSpace(location);
-    anchorPoint = ccp(anchorPoint.x / m_MapNode->getContentSize().width, anchorPoint.y / m_MapNode->getContentSize().height);
+    CCPoint anchorPoint = convertToNodeSpace(location);
+    anchorPoint = ccp(anchorPoint.x / getContentSize().width, anchorPoint.y / getContentSize().height);
     return anchorPoint;
 }
 
 /**
  @brief     Keep the map from going too far outside of its positional and scaling limitations.
  */
-void MapNavigator::applyTransformLimitationsToMap()
+void Map::applyTransformLimitationsToMap()
 {
     /*
      Here we will be preventing the map's transform from going too far outside of their reasonable boundaries
@@ -271,47 +268,47 @@ void MapNavigator::applyTransformLimitationsToMap()
     
     // Keep the map's position on-screen, checking each side one at a time.
     
-    float top = m_MapNode->getPositionY()+m_MapNode->getContentSize().height*m_MapNode->getScale()*(1-m_MapNode->getAnchorPoint().y);
+    float top = getPositionY()+getContentSize().height*getScale()*(1-getAnchorPoint().y);
     if (top < WIN_SIZE.height)
     {
-        m_MapNode->setPositionY(m_MapNode->getPositionY() + (WIN_SIZE.height-top)/elasticity);
+        setPositionY(getPositionY() + (WIN_SIZE.height-top)/elasticity);
     }
     
-    float bottom = m_MapNode->getPositionY()-m_MapNode->getContentSize().height*m_MapNode->getScale()*m_MapNode->getAnchorPoint().y;
+    float bottom = getPositionY()-getContentSize().height*getScale()*getAnchorPoint().y;
     if (bottom > 0)
     {
-        m_MapNode->setPositionY(m_MapNode->getPositionY() - bottom/elasticity);
+        setPositionY(getPositionY() - bottom/elasticity);
     }
     
-    float leftSide = m_MapNode->getPositionX()-m_MapNode->getContentSize().width*m_MapNode->getScale()*m_MapNode->getAnchorPoint().x;
+    float leftSide = getPositionX()-getContentSize().width*getScale()*getAnchorPoint().x;
     if (leftSide > 0)
     {
-        m_MapNode->setPositionX(m_MapNode->getPositionX() - leftSide/elasticity);
+        setPositionX(getPositionX() - leftSide/elasticity);
     }
     
-    float rightSide = m_MapNode->getPositionX()+m_MapNode->getContentSize().width*m_MapNode->getScale()*(1-m_MapNode->getAnchorPoint().x);
+    float rightSide = getPositionX()+getContentSize().width*getScale()*(1-getAnchorPoint().x);
     if (rightSide < WIN_SIZE.width)
     {
-        m_MapNode->setPositionX(m_MapNode->getPositionX() + (WIN_SIZE.width-rightSide)/elasticity);
+        setPositionX(getPositionX() + (WIN_SIZE.width-rightSide)/elasticity);
     }
     
     // Keep the map's scale at a comfortable level.
     
-    if (m_MapNode->getScale() < MIN_SCALE)
+    if (getScale() < MIN_SCALE)
     {
-        m_MapNode->setScale(m_MapNode->getScale() + (MIN_SCALE-m_MapNode->getScale())/2);
+        setScale(getScale() + (MIN_SCALE-getScale())/2);
     }
     
-    if (m_MapNode->getScale() > MAX_SCALE)
+    if (getScale() > MAX_SCALE)
     {
-        m_MapNode->setScale(MAX_SCALE + (m_MapNode->getScale() - MAX_SCALE)/2);
+        setScale(MAX_SCALE + (getScale() - MAX_SCALE)/2);
     }
 }
 
 /**
  @brief     If the map is outside of its boundaries, snap it back smoothly.
  */
-void MapNavigator::snapMapToTransformLimitations()
+void Map::snapMapToTransformLimitations()
 {
     // The length of time the snap should take.
     const float snapTime = 0.2f;
@@ -320,30 +317,30 @@ void MapNavigator::snapMapToTransformLimitations()
     CCPoint distanceToMove;
     
     // Add the map's distance out-of-bounds on the top to the distanceToMove.
-    distanceToMove.y += MAX(WIN_SIZE.height - (m_MapNode->getPositionY()+m_MapNode->getContentSize().height*m_MapNode->getScale()*(1-m_MapNode->getAnchorPoint().y)), 0);
+    distanceToMove.y += MAX(WIN_SIZE.height - (getPositionY()+getContentSize().height*getScale()*(1-getAnchorPoint().y)), 0);
     
     // Add the map's distance out-of-bounds on the bottom to the distanceToMove.
-    distanceToMove.y -= MAX(m_MapNode->getPositionY()-m_MapNode->getContentSize().height*m_MapNode->getScale()*m_MapNode->getAnchorPoint().y, 0);
+    distanceToMove.y -= MAX(getPositionY()-getContentSize().height*getScale()*getAnchorPoint().y, 0);
     
     // Add the map's distance out-of-bounds on the left side to the distanceToMove.
-    distanceToMove.x -= MAX(m_MapNode->getPositionX()-m_MapNode->getContentSize().width*m_MapNode->getScale()*m_MapNode->getAnchorPoint().x, 0);
+    distanceToMove.x -= MAX(getPositionX()-getContentSize().width*getScale()*getAnchorPoint().x, 0);
     
     // Add the map's distance out-of-bounds on the right side to the distanceToMove.
-    distanceToMove.x += MAX(WIN_SIZE.width - (m_MapNode->getPositionX()+m_MapNode->getContentSize().width*m_MapNode->getScale()*(1-m_MapNode->getAnchorPoint().x)), 0);
+    distanceToMove.x += MAX(WIN_SIZE.width - (getPositionX()+getContentSize().width*getScale()*(1-getAnchorPoint().x)), 0);
     
     // Move the map by the distance we calculated.
-    m_MapNode->runAction(CCEaseOut::create(CCMoveBy::create(snapTime, distanceToMove), 3));
+    runAction(CCEaseOut::create(CCMoveBy::create(snapTime, distanceToMove), 3));
     
     
     // Scale the up or down to be within its scaling bounds.
     
-    if (m_MapNode->getScale() < MIN_SCALE)
+    if (getScale() < MIN_SCALE)
     {
-        m_MapNode->runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MIN_SCALE), 3));
+        runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MIN_SCALE), 3));
     }
     
-    if (m_MapNode->getScale() > MAX_SCALE)
+    if (getScale() > MAX_SCALE)
     {
-        m_MapNode->runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MAX_SCALE), 3));
+        runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MAX_SCALE), 3));
     }
 }

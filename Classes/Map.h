@@ -14,7 +14,7 @@
 /**
  @brief    A controller which manages the behaviour of and interaction with nodes that represent a map.
  */
-class Map : public cocos2d::CCTouchDelegate
+class Map : public cocos2d::CCNode, public cocos2d::CCTouchDelegate
 {
 public:
     
@@ -62,11 +62,6 @@ protected:
      @return    Whether or not the initialization was successful.
      */
     bool init(cocos2d::CCNode* mapNode);
-    
-    /**
-     @brief     Called when the map map is removed from the node tree.
-     */
-    void onExit();
     
     /**
      @brief     Record any necessary information in anticipation of panning.

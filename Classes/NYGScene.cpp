@@ -9,7 +9,7 @@
 #include "NYGScene.h"
 #include "Defines.h"
 #include "CompositeSprite.h"
-#include "MapNavigator.h"
+#include "Map.h"
 
 using namespace cocos2d;
 
@@ -37,23 +37,12 @@ bool NewYorkGuide::init()
         return false;
     }
     
-    // Create a node for the map and add its sprites to it.
-    CompositeSprite* map = CompositeSprite::create("map", ".png", 4, 5);
+    // Create a map for the user to navigate.
+    Map* map = Map::create(CompositeSprite::create("map", ".png", 4, 5));
     if (map)
     {
-        map->setPosition(WIN_SIZE.width/2, WIN_SIZE.height/2);
-    }
-    else
-    {
-        return false;
-    }
-    
-    // Create a map navigator node so the user can move the map around, then add the map to it.
-    MapNavigator* navigator = MapNavigator::create(map);
-    if (navigator && map)
-    {
-        addChild(navigator);
-        navigator->addChild(map);
+        addChild(map);
+        map->setPosition(ccp(WIN_SIZE.width/2, WIN_SIZE.height/2));
     }
     else
     {
