@@ -64,6 +64,11 @@ protected:
     bool init(cocos2d::CCNode* mapNode);
     
     /**
+     @brief     Called when this is removed from the node tree.
+     */
+    void onExit();
+    
+    /**
      @brief     Record any necessary information in anticipation of panning.
      @return    Whether or not the conditions for panning were met; this method will only succeed if we are tracking exactly one touch.
      */

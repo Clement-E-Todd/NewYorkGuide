@@ -55,6 +55,18 @@ bool Map::init(CCNode *mapNode)
 }
 
 /**
+ @brief     Called when this is removed from the node tree.
+ */
+void Map::onExit()
+{
+    // Unregister from the touch dispatcher.
+    CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+    
+    // Call the base class's onExit()
+    CCNode::onExit();
+}
+
+/**
  @brief     Respond to the beginning of a user's touch.
  @param     pTouch      A pointer to the touch information.
  @param     pEvent      The event data.
