@@ -342,7 +342,6 @@ void MapNavigator::snapMapToTransformLimitations()
         m_MapNode->runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MIN_SCALE), 3));
     }
     
-    CCLOG("Min scale = %f, Current Scale = %f", MIN_SCALE, m_MapNode->getScale());
     if (m_MapNode->getScale() > MAX_SCALE)
     {
         m_MapNode->runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MAX_SCALE), 3));
