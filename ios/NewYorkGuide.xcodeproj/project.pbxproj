@@ -55,7 +55,7 @@
 		113F963318616F7200628EA7 /* map3x4.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F960718616F7200628EA7 /* map3x4.png */; };
 		11CFF5E317D7794400240EE3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CFF5E217D7794400240EE3 /* StoreKit.framework */; };
 		11E6B5E01861634D00F9598D /* CompositeSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11E6B5D91861634D00F9598D /* CompositeSprite.cpp */; };
-		11E6B5E11861634D00F9598D /* MapNavigator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11E6B5DC1861634D00F9598D /* MapNavigator.cpp */; };
+		11E6B5E11861634D00F9598D /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11E6B5DC1861634D00F9598D /* Map.cpp */; };
 		11E6B5E21861634D00F9598D /* NYGScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11E6B5DE1861634D00F9598D /* NYGScene.cpp */; };
 		11F93B5C1803219100232A9F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F93B5B1803219100232A9F /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		11F93B5E180321A000232A9F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F93B5D180321A000232A9F /* CoreData.framework */; };
@@ -165,8 +165,8 @@
 		11E6B5D91861634D00F9598D /* CompositeSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CompositeSprite.cpp; path = ../Classes/CompositeSprite.cpp; sourceTree = "<group>"; };
 		11E6B5DA1861634D00F9598D /* CompositeSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompositeSprite.h; path = ../Classes/CompositeSprite.h; sourceTree = "<group>"; };
 		11E6B5DB1861634D00F9598D /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Defines.h; path = ../Classes/Defines.h; sourceTree = "<group>"; };
-		11E6B5DC1861634D00F9598D /* MapNavigator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapNavigator.cpp; path = ../Classes/MapNavigator.cpp; sourceTree = "<group>"; };
-		11E6B5DD1861634D00F9598D /* MapNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapNavigator.h; path = ../Classes/MapNavigator.h; sourceTree = "<group>"; };
+		11E6B5DC1861634D00F9598D /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Map.cpp; path = ../Classes/Map.cpp; sourceTree = "<group>"; };
+		11E6B5DD1861634D00F9598D /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Map.h; path = ../Classes/Map.h; sourceTree = "<group>"; };
 		11E6B5DE1861634D00F9598D /* NYGScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NYGScene.cpp; path = ../Classes/NYGScene.cpp; sourceTree = "<group>"; };
 		11E6B5DF1861634D00F9598D /* NYGScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYGScene.h; path = ../Classes/NYGScene.h; sourceTree = "<group>"; };
 		11F93B5B1803219100232A9F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -398,8 +398,8 @@
 				11E6B5D91861634D00F9598D /* CompositeSprite.cpp */,
 				11E6B5DA1861634D00F9598D /* CompositeSprite.h */,
 				11E6B5DB1861634D00F9598D /* Defines.h */,
-				11E6B5DC1861634D00F9598D /* MapNavigator.cpp */,
-				11E6B5DD1861634D00F9598D /* MapNavigator.h */,
+				11E6B5DC1861634D00F9598D /* Map.cpp */,
+				11E6B5DD1861634D00F9598D /* Map.h */,
 				11E6B5DE1861634D00F9598D /* NYGScene.cpp */,
 				11E6B5DF1861634D00F9598D /* NYGScene.h */,
 			);
@@ -631,7 +631,7 @@
 				11E6B5E21861634D00F9598D /* NYGScene.cpp in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
-				11E6B5E11861634D00F9598D /* MapNavigator.cpp in Sources */,
+				11E6B5E11861634D00F9598D /* Map.cpp in Sources */,
 				1AC3624B16D4A1E8000847F2 /* main.m in Sources */,
 				1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */,
 				112705CE17BBDF00002BECF3 /* AppDelegate.cpp in Sources */,

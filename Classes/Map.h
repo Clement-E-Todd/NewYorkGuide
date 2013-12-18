@@ -1,35 +1,35 @@
 //
-//  MapNavigator.h
+//  Map.h
 //  NewYorkGuide
 //
 //  Created by Clement Todd on 2013-12-11.
 //
 //
 
-#ifndef MAP_NAVIGATOR_H
-#define MAP_NAVIGATOR_H
+#ifndef MAP_H
+#define MAP_H
 
 #include "cocos2d.h"
 
 /**
- @brief    A node which takes user input to navigate around a map node.
+ @brief    A controller which manages the behaviour of and interaction with nodes that represent a map.
  */
-class MapNavigator : public cocos2d::CCNode, public cocos2d::CCTouchDelegate
+class Map : public cocos2d::CCTouchDelegate
 {
 public:
     
     /**
-     @brief     Create an MapNavigator instance with a target map node.
-     @param     mapNode     The map which should be manipulated by the navigator.
-     @return    A pointer to the newly created MapNavigator.
+     @brief     Create a Map instance with a target map node.
+     @param     mapNode     The node which visually represents the map.
+     @return    A pointer to the newly created Map.
      */
-    static MapNavigator* create(cocos2d::CCNode* mapNode);
+    static Map* create(cocos2d::CCNode* mapNode);
     
     /**
      @brief     Respond to the beginning of a user's touch.
      @param     pTouch      A pointer to the touch information.
      @param     pEvent      The event data.
-     @return    Whether or not the map navigator accepted the touch input.
+     @return    Whether or not the map  accepted the touch input.
      */
     bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     
@@ -57,14 +57,14 @@ public:
 protected:
     
     /**
-     @brief     Initialize the map navigator with its target map node.
-     @param     mapNode     The map which should be manipulated by the navigator.
+     @brief     Initialize the map with its target map node.
+     @param     mapNode     The node which visually represents the map.
      @return    Whether or not the initialization was successful.
      */
     bool init(cocos2d::CCNode* mapNode);
     
     /**
-     @brief     Called when the map navigator is removed from the node tree.
+     @brief     Called when the map map is removed from the node tree.
      */
     void onExit();
     
@@ -99,7 +99,7 @@ protected:
     
 private:
     
-    // The node which is manipulated by the MapNavigator.
+    // The node which visually represents the map.
     cocos2d::CCNode* m_MapNode;
     
     // Pointers to the touch input data (we only care about 2 touches at once, so that's all we store).
@@ -111,4 +111,4 @@ private:
     cocos2d::CCPoint m_TouchStartPositions[2];
 };
 
-#endif // MAP_NAVIGATOR_H
+#endif // MAP_H
