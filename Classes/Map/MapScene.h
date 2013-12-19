@@ -1,25 +1,25 @@
 //
-//  NYGScene.h
+//  MapScene.h
 //  New York Guide
 //
 //  Created by Clément Todd on 2013-12-08.
 //  Copyright Clément Todd 2013. All rights reserved.
 //
 
-#ifndef NYG_SCENE_H
-#define NYG_SCENE_H
+#ifndef MAP_SCENE_H
+#define MAP_SCENE_H
 
 #include "cocos2d.h"
 
 /**
  @brief    The layer in which the application displays itself to the user.
  */
-class NewYorkGuide : public cocos2d::CCLayer
+class MapScene : public cocos2d::CCLayer
 {
 public:
     
     /**
-     @brief     Create a CCScene containing a NewYorkGuide layer.
+     @brief     Create a CCScene containing a MapScene layer.
      @return    A pointer to the newly created scene.
      */
     static cocos2d::CCScene* scene();
@@ -28,10 +28,10 @@ public:
 protected:
     
     /**
-     @brief     Create an instance of the NewYorkGuide layer.
+     @brief     Create an instance of the MapScene layer.
      @return    A pointer to the newly created layer.
      */
-    CREATE_FUNC(NewYorkGuide);
+    CREATE_FUNC(MapScene);
     
     /**
      @brief     Initialize the layer by populating it with its contents.
@@ -41,4 +41,4 @@ protected:
     virtual bool init();
 };
 
-#endif // NYG_SCENE_H
+#endif // MAP_SCENE_H

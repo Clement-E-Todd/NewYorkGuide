@@ -1,12 +1,12 @@
 //
-//  NYGScene.cpp
+//  MapScene.cpp
 //  New York Guide
 //
 //  Created by Clément Todd on 2013-12-08.
 //  Copyright Clément Todd 2013. All rights reserved.
 //
 
-#include "NYGScene.h"
+#include "MapScene.h"
 #include "Defines.h"
 #include "CompositeSprite.h"
 #include "Map.h"
@@ -14,13 +14,13 @@
 using namespace cocos2d;
 
 /**
- @brief     Create a CCScene containing a NewYorkGuide layer.
+ @brief     Create a CCScene containing a MapScene layer.
  @return    A pointer to the newly created scene.
  */
-CCScene* NewYorkGuide::scene()
+CCScene* MapScene::scene()
 {
     CCScene *scene = CCScene::create();
-    NewYorkGuide *layer = NewYorkGuide::create();
+    MapScene *layer = MapScene::create();
     scene->addChild(layer);
     return scene;
 }
@@ -30,7 +30,7 @@ CCScene* NewYorkGuide::scene()
  @return    true    The layer was initialized successfully.
  @return    false   The layer failed to initialize.
  */
-bool NewYorkGuide::init()
+bool MapScene::init()
 {
     if ( !CCLayer::init() )
     {

@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1102E47D18635FB5005B23E2 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1102E46E18635FB5005B23E2 /* AppDelegate.cpp */; };
+		1102E47E18635FB5005B23E2 /* LandmarkButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1102E47318635FB5005B23E2 /* LandmarkButton.cpp */; };
+		1102E47F18635FB5005B23E2 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1102E47618635FB5005B23E2 /* Map.cpp */; };
+		1102E48018635FB5005B23E2 /* MapScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1102E47818635FB5005B23E2 /* MapScene.cpp */; };
+		1102E48118635FB5005B23E2 /* CompositeSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1102E47B18635FB5005B23E2 /* CompositeSprite.cpp */; };
 		110CA5F6181AC81000513C8B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110CA5F5181AC81000513C8B /* CoreText.framework */; };
-		112705CE17BBDF00002BECF3 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1127054817BBCEB6002BECF3 /* AppDelegate.cpp */; };
 		113F960818616F7200628EA7 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F95DA18616F7200628EA7 /* infoButton.png */; };
 		113F960918616F7200628EA7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F95DC18616F7200628EA7 /* Default-568h@2x.png */; };
 		113F960A18616F7200628EA7 /* Default-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F95DD18616F7200628EA7 /* Default-iPad.png */; };
@@ -54,9 +58,6 @@
 		113F963218616F7200628EA7 /* map3x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F960618616F7200628EA7 /* map3x3.png */; };
 		113F963318616F7200628EA7 /* map3x4.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F960718616F7200628EA7 /* map3x4.png */; };
 		11CFF5E317D7794400240EE3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CFF5E217D7794400240EE3 /* StoreKit.framework */; };
-		11E6B5E01861634D00F9598D /* CompositeSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11E6B5D91861634D00F9598D /* CompositeSprite.cpp */; };
-		11E6B5E11861634D00F9598D /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11E6B5DC1861634D00F9598D /* Map.cpp */; };
-		11E6B5E21861634D00F9598D /* NYGScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 11E6B5DE1861634D00F9598D /* NYGScene.cpp */; };
 		11F93B5C1803219100232A9F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F93B5B1803219100232A9F /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		11F93B5E180321A000232A9F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F93B5D180321A000232A9F /* CoreData.framework */; };
 		11F93B6218032FB300232A9F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F93B6118032FB300232A9F /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -114,9 +115,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1102E46E18635FB5005B23E2 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
+		1102E46F18635FB5005B23E2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1102E47118635FB5005B23E2 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		1102E47318635FB5005B23E2 /* LandmarkButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LandmarkButton.cpp; sourceTree = "<group>"; };
+		1102E47418635FB5005B23E2 /* LandmarkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandmarkButton.h; sourceTree = "<group>"; };
+		1102E47618635FB5005B23E2 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		1102E47718635FB5005B23E2 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
+		1102E47818635FB5005B23E2 /* MapScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapScene.cpp; sourceTree = "<group>"; };
+		1102E47918635FB5005B23E2 /* MapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapScene.h; sourceTree = "<group>"; };
+		1102E47B18635FB5005B23E2 /* CompositeSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompositeSprite.cpp; sourceTree = "<group>"; };
+		1102E47C18635FB5005B23E2 /* CompositeSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompositeSprite.h; sourceTree = "<group>"; };
 		110CA5F5181AC81000513C8B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		1127054817BBCEB6002BECF3 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
-		1127054917BBCEB6002BECF3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
 		113F95DA18616F7200628EA7 /* infoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoButton.png; sourceTree = "<group>"; };
 		113F95DC18616F7200628EA7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		113F95DD18616F7200628EA7 /* Default-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iPad.png"; sourceTree = "<group>"; };
@@ -162,13 +172,6 @@
 		113F960618616F7200628EA7 /* map3x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3x3.png; sourceTree = "<group>"; };
 		113F960718616F7200628EA7 /* map3x4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map3x4.png; sourceTree = "<group>"; };
 		11CFF5E217D7794400240EE3 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		11E6B5D91861634D00F9598D /* CompositeSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CompositeSprite.cpp; path = ../Classes/CompositeSprite.cpp; sourceTree = "<group>"; };
-		11E6B5DA1861634D00F9598D /* CompositeSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompositeSprite.h; path = ../Classes/CompositeSprite.h; sourceTree = "<group>"; };
-		11E6B5DB1861634D00F9598D /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Defines.h; path = ../Classes/Defines.h; sourceTree = "<group>"; };
-		11E6B5DC1861634D00F9598D /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Map.cpp; path = ../Classes/Map.cpp; sourceTree = "<group>"; };
-		11E6B5DD1861634D00F9598D /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Map.h; path = ../Classes/Map.h; sourceTree = "<group>"; };
-		11E6B5DE1861634D00F9598D /* NYGScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NYGScene.cpp; path = ../Classes/NYGScene.cpp; sourceTree = "<group>"; };
-		11E6B5DF1861634D00F9598D /* NYGScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NYGScene.h; path = ../Classes/NYGScene.h; sourceTree = "<group>"; };
 		11F93B5B1803219100232A9F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		11F93B5D180321A000232A9F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		11F93B6118032FB300232A9F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -276,6 +279,57 @@
 			);
 			name = ios;
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		1102E46D18635FB5005B23E2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1102E46E18635FB5005B23E2 /* AppDelegate.cpp */,
+				1102E46F18635FB5005B23E2 /* AppDelegate.h */,
+			);
+			name = App;
+			path = ../Classes/App;
+			sourceTree = "<group>";
+		};
+		1102E47018635FB5005B23E2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1102E47118635FB5005B23E2 /* Defines.h */,
+			);
+			name = Helpers;
+			path = ../Classes/Helpers;
+			sourceTree = "<group>";
+		};
+		1102E47218635FB5005B23E2 /* Landmarks */ = {
+			isa = PBXGroup;
+			children = (
+				1102E47318635FB5005B23E2 /* LandmarkButton.cpp */,
+				1102E47418635FB5005B23E2 /* LandmarkButton.h */,
+			);
+			name = Landmarks;
+			path = ../Classes/Landmarks;
+			sourceTree = "<group>";
+		};
+		1102E47518635FB5005B23E2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1102E47618635FB5005B23E2 /* Map.cpp */,
+				1102E47718635FB5005B23E2 /* Map.h */,
+				1102E47818635FB5005B23E2 /* MapScene.cpp */,
+				1102E47918635FB5005B23E2 /* MapScene.h */,
+			);
+			name = Map;
+			path = ../Classes/Map;
+			sourceTree = "<group>";
+		};
+		1102E47A18635FB5005B23E2 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				1102E47B18635FB5005B23E2 /* CompositeSprite.cpp */,
+				1102E47C18635FB5005B23E2 /* CompositeSprite.h */,
+			);
+			name = "User Interface";
+			path = ../Classes/UserInterface;
 			sourceTree = "<group>";
 		};
 		113F95D918616F7200628EA7 /* Resources */ = {
@@ -393,15 +447,11 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1127054817BBCEB6002BECF3 /* AppDelegate.cpp */,
-				1127054917BBCEB6002BECF3 /* AppDelegate.h */,
-				11E6B5D91861634D00F9598D /* CompositeSprite.cpp */,
-				11E6B5DA1861634D00F9598D /* CompositeSprite.h */,
-				11E6B5DB1861634D00F9598D /* Defines.h */,
-				11E6B5DC1861634D00F9598D /* Map.cpp */,
-				11E6B5DD1861634D00F9598D /* Map.h */,
-				11E6B5DE1861634D00F9598D /* NYGScene.cpp */,
-				11E6B5DF1861634D00F9598D /* NYGScene.h */,
+				1102E46D18635FB5005B23E2 /* App */,
+				1102E47018635FB5005B23E2 /* Helpers */,
+				1102E47218635FB5005B23E2 /* Landmarks */,
+				1102E47518635FB5005B23E2 /* Map */,
+				1102E47A18635FB5005B23E2 /* User Interface */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -623,18 +673,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11E6B5E01861634D00F9598D /* CompositeSprite.cpp in Sources */,
 				15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */,
 				15A3DAEC1682F8A6002FB0C5 /* CDOpenALSupport.m in Sources */,
+				1102E47D18635FB5005B23E2 /* AppDelegate.cpp in Sources */,
 				15A3DAED1682F8A6002FB0C5 /* CocosDenshion.m in Sources */,
 				15A3DAEE1682F8A6002FB0C5 /* SimpleAudioEngine.mm in Sources */,
-				11E6B5E21861634D00F9598D /* NYGScene.cpp in Sources */,
+				1102E48018635FB5005B23E2 /* MapScene.cpp in Sources */,
+				1102E47F18635FB5005B23E2 /* Map.cpp in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
+				1102E48118635FB5005B23E2 /* CompositeSprite.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
-				11E6B5E11861634D00F9598D /* Map.cpp in Sources */,
 				1AC3624B16D4A1E8000847F2 /* main.m in Sources */,
 				1AFCDA8216D4A25900906EA6 /* RootViewController.mm in Sources */,
-				112705CE17BBDF00002BECF3 /* AppDelegate.cpp in Sources */,
+				1102E47E18635FB5005B23E2 /* LandmarkButton.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

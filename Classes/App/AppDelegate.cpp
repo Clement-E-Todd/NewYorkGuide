@@ -9,7 +9,7 @@
 #include "AppDelegate.h"
 
 #include "cocos2d.h"
-#include "NYGScene.h"
+#include "MapScene.h"
 
 USING_NS_CC;
 
@@ -28,7 +28,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
     
     // Create the app's scene and run it.
-    CCScene *pScene = NewYorkGuide::scene();
+    CCScene *pScene = MapScene::scene();
     pDirector->runWithScene(pScene);
 
     return true;
