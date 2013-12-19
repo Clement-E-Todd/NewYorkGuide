@@ -19,4 +19,9 @@
  */
 #define DISPLAY_TOUCH_MESSAGES false
 
+/**
+ *  The scale of the screen compared to iPad Retina (ie. iPad Retina would be "1" while non-retina would be "0.5")
+ */
+#define SCREEN_SCALE (WIN_SIZE.width / 1536)
+
 #endif // DEFINES_H

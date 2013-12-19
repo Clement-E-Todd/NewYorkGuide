@@ -11,8 +11,8 @@
 
 using namespace cocos2d;
 
-#define MIN_SCALE   ((WIN_SIZE.width / getContentSize().width) * 2)
-#define MAX_SCALE   (1.5f)
+#define MIN_SCALE   (MAX(WIN_SIZE.width / getContentSize().width, WIN_SIZE.height / getContentSize().height))
+#define MAX_SCALE   (SCREEN_SCALE * 1.5f)
 
 /**
  @brief     Create a Map instance with a target map node.
@@ -125,9 +125,6 @@ void Map::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
         // Move the map to its new position.
         unsigned char touchID = m_Touches[0] ? 0 : 1;
         setPosition(ccpAdd(m_MapNodeStartPosition, ccpSub(m_Touches[touchID]->getLocation(), m_TouchStartPositions[touchID])));
-        
-        // Apply limits to the map's position.
-        applyTransformLimitationsToMap();
     }
     
     // If we are tracking two touches, zoom in or out based on their positions relative to each other.
@@ -145,9 +142,6 @@ void Map::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
         CCPoint originalMidpoint = ccpMidpoint(m_TouchStartPositions[0], m_TouchStartPositions[1]);
         CCPoint currentMidpoint = ccpMidpoint(m_Touches[0]->getLocation(), m_Touches[1]->getLocation());
         setPosition(ccpAdd(m_MapNodeStartPosition, ccpSub(currentMidpoint, originalMidpoint)));
-        
-        // Apply limits to the map's position and scale.
-        applyTransformLimitationsToMap();
     }
 }
 
@@ -265,59 +259,6 @@ CCPoint Map::getAnchorPointFromLocation(CCPoint location)
 }
 
 /**
- @brief     Keep the map from going too far outside of its positional and scaling limitations.
- */
-void Map::applyTransformLimitationsToMap()
-{
-    /*
-     Here we will be preventing the map's transform from going too far outside of their reasonable boundaries
-     by first checking the transform and then pulling it back within its limits. However, we don't want to
-     pull it *all* the way back, because that gives a jarring and unpleasant feeling to the user experience.
-     We instead create an "elastic" effect by dividing the amount we are pulling the transformation back by
-     a constant "elasticity" value, as defined below.
-     */
-    const float elasticity = 1.4f;
-    
-    // Keep the map's position on-screen, checking each side one at a time.
-    
-    float top = getPositionY()+getContentSize().height*getScale()*(1-getAnchorPoint().y);
-    if (top < WIN_SIZE.height)
-    {
-        setPositionY(getPositionY() + (WIN_SIZE.height-top)/elasticity);
-    }
-    
-    float bottom = getPositionY()-getContentSize().height*getScale()*getAnchorPoint().y;
-    if (bottom > 0)
-    {
-        setPositionY(getPositionY() - bottom/elasticity);
-    }
-    
-    float leftSide = getPositionX()-getContentSize().width*getScale()*getAnchorPoint().x;
-    if (leftSide > 0)
-    {
-        setPositionX(getPositionX() - leftSide/elasticity);
-    }
-    
-    float rightSide = getPositionX()+getContentSize().width*getScale()*(1-getAnchorPoint().x);
-    if (rightSide < WIN_SIZE.width)
-    {
-        setPositionX(getPositionX() + (WIN_SIZE.width-rightSide)/elasticity);
-    }
-    
-    // Keep the map's scale at a comfortable level.
-    
-    if (getScale() < MIN_SCALE)
-    {
-        setScale(getScale() + (MIN_SCALE-getScale())/2);
-    }
-    
-    if (getScale() > MAX_SCALE)
-    {
-        setScale(MAX_SCALE + (getScale() - MAX_SCALE)/2);
-    }
-}
-
-/**
  @brief     If the map is outside of its boundaries, snap it back smoothly.
  */
 void Map::snapMapToTransformLimitations()
@@ -325,34 +266,34 @@ void Map::snapMapToTransformLimitations()
     // The length of time the snap should take.
     const float snapTime = 0.2f;
     
+    // Scale the up or down to be within its scaling bounds, keeping track of the final for use in the positioning logic.
+    float snappedScale = getScale();
+    if (getScale() < MIN_SCALE)
+    {
+        runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MIN_SCALE), 3));
+        snappedScale = MIN_SCALE;
+    }
+    if (getScale() > MAX_SCALE)
+    {
+        runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MAX_SCALE), 3));
+        snappedScale = MAX_SCALE;
+    }
+    
     // Figure out distance to move by.
     CCPoint distanceToMove;
     
     // Add the map's distance out-of-bounds on the top to the distanceToMove.
-    distanceToMove.y += MAX(WIN_SIZE.height - (getPositionY()+getContentSize().height*getScale()*(1-getAnchorPoint().y)), 0);
+    distanceToMove.y += MAX(WIN_SIZE.height - (getPositionY()+getContentSize().height*snappedScale*(1-getAnchorPoint().y)), 0);
     
     // Add the map's distance out-of-bounds on the bottom to the distanceToMove.
-    distanceToMove.y -= MAX(getPositionY()-getContentSize().height*getScale()*getAnchorPoint().y, 0);
+    distanceToMove.y -= MAX(getPositionY()-getContentSize().height*snappedScale*getAnchorPoint().y, 0);
     
     // Add the map's distance out-of-bounds on the left side to the distanceToMove.
-    distanceToMove.x -= MAX(getPositionX()-getContentSize().width*getScale()*getAnchorPoint().x, 0);
+    distanceToMove.x -= MAX(getPositionX()-getContentSize().width*snappedScale*getAnchorPoint().x, 0);
     
     // Add the map's distance out-of-bounds on the right side to the distanceToMove.
-    distanceToMove.x += MAX(WIN_SIZE.width - (getPositionX()+getContentSize().width*getScale()*(1-getAnchorPoint().x)), 0);
+    distanceToMove.x += MAX(WIN_SIZE.width - (getPositionX()+getContentSize().width*snappedScale*(1-getAnchorPoint().x)), 0);
     
     // Move the map by the distance we calculated.
     runAction(CCEaseOut::create(CCMoveBy::create(snapTime, distanceToMove), 3));
-    
-    
-    // Scale the up or down to be within its scaling bounds.
-    
-    if (getScale() < MIN_SCALE)
-    {
-        runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MIN_SCALE), 3));
-    }
-    
-    if (getScale() > MAX_SCALE)
-    {
-        runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MAX_SCALE), 3));
-    }
 }
