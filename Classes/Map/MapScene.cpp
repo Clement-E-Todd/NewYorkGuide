@@ -8,8 +8,7 @@
 
 #include "MapScene.h"
 #include "Defines.h"
-#include "CompositeSprite.h"
-#include "Map.h"
+#include "NewYorkMap.h"
 
 using namespace cocos2d;
 
@@ -38,21 +37,16 @@ bool MapScene::init()
     }
     
     // Create a map for the user to navigate.
-    Map* map = Map::create(CompositeSprite::create("map", ".png", 4, 5));
+    NewYorkMap* map = NewYorkMap::create();
     if (map)
     {
         addChild(map);
         map->setPosition(ccp(WIN_SIZE.width/2, WIN_SIZE.height/2));
+        
+        return true;
     }
     else
     {
         return false;
     }
-    
-    // TEMP
-    CCSprite* sprite = CCSprite::create("infoButton.png");
-    addChild(sprite);
-    sprite->setPosition(ccp(WIN_SIZE.width/2, WIN_SIZE.height/2));
-    
-    return true;
 }

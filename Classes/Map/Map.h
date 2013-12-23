@@ -10,6 +10,9 @@
 #define MAP_H
 
 #include "cocos2d.h"
+#include <vector.h>
+#include "Landmark.h"
+#include "LandmarkButton.h"
 
 /**
  @brief    A controller which manages the behaviour of and interaction with nodes that represent a map.
@@ -54,6 +57,14 @@ public:
      */
     void ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent);
     
+    /**
+     @brief     Add a new landmark to the map.
+     @param     landmark    The landmark data to be displayed.
+     @param     coords      The landmark's position on the map (ranging from bottom-left (0,0) to top-right (1,1)).
+     @return    Whether or not the landmark was added successfully.
+     */
+    bool addLandmark(Landmark landmark, cocos2d::CCPoint coords);
+    
 protected:
     
     /**
@@ -92,6 +103,13 @@ protected:
      */
     void snapMapToTransformLimitations();
     
+    /**
+     @brief     Set all of the landmarks on the map to their original scale.
+     @param     duration    How long in seconds it should take for the landmarks to scale.
+     @param     futureScale The scale that the Map is expected to be at at the end of the duration (use 0,0 for current).
+     */
+    void maintainScaleOfLandmarks(float duration = 0.0f, cocos2d::CCPoint futureScale = cocos2d::CCPointZero);
+    
 private:
     
     // The node which visually represents the map.
@@ -104,6 +122,9 @@ private:
     cocos2d::CCPoint m_MapNodeStartPosition;
     float m_MapNodeStartScale;
     cocos2d::CCPoint m_TouchStartPositions[2];
+    
+    // A collection of landmarks being displayed on the map as buttons which can be pressed to get more information.
+    std::vector<LandmarkButton*> m_LandmarkButtons;
 };
 
 #endif // MAP_H

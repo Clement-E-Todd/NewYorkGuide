@@ -11,8 +11,8 @@
 
 using namespace cocos2d;
 
-#define MIN_SCALE   (MAX(WIN_SIZE.width / getContentSize().width, WIN_SIZE.height / getContentSize().height))
-#define MAX_SCALE   (SCREEN_SCALE * 1.5f)
+#define MIN_SCALE   (MAX(WIN_SIZE.width / getContentSize().width, WIN_SIZE.height / getContentSize().height)*2)
+#define MAX_SCALE   (SCREEN_SCALE * 2.5f)
 
 /**
  @brief     Create a Map instance with a target map node.
@@ -137,6 +137,9 @@ void Map::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
         
         // Scale the map based on the value we just calculated.
         setScale(m_MapNodeStartScale * scaleFactor);
+        
+        // Also scale all of the landmarks.
+        maintainScaleOfLandmarks();
         
         // Also pan the view based on the midpoint of the two touches.
         CCPoint originalMidpoint = ccpMidpoint(m_TouchStartPositions[0], m_TouchStartPositions[1]);
@@ -270,14 +273,16 @@ void Map::snapMapToTransformLimitations()
     float snappedScale = getScale();
     if (getScale() < MIN_SCALE)
     {
-        runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MIN_SCALE), 3));
         snappedScale = MIN_SCALE;
     }
     if (getScale() > MAX_SCALE)
     {
-        runAction(CCEaseOut::create(CCScaleTo::create(snapTime, MAX_SCALE), 3));
         snappedScale = MAX_SCALE;
     }
+    runAction(CCEaseOut::create(CCScaleTo::create(snapTime, snappedScale), 3));
+    
+    // Also scale all of the landmarks.
+    maintainScaleOfLandmarks(snapTime, ccp(snappedScale, snappedScale));
     
     // Figure out distance to move by.
     CCPoint distanceToMove;
@@ -296,4 +301,41 @@ void Map::snapMapToTransformLimitations()
     
     // Move the map by the distance we calculated.
     runAction(CCEaseOut::create(CCMoveBy::create(snapTime, distanceToMove), 3));
+}
+
+/**
+ @brief     Add a new landmark to the map.
+ @param     landmark    The landmark data to be displayed.
+ @param     coords      The landmark's position on the map (ranging from bottom-left (0,0) to top-right (1,1)).
+ @return    Whether or not the landmark was added successfully.
+ */
+bool Map::addLandmark(Landmark landmark, CCPoint coords)
+{
+    LandmarkButton* button = LandmarkButton::create(landmark);
+    
+    if (button)
+    {
+        addChild(button);
+        button->setPosition(ccp(getContentSize().width*coords.x, getContentSize().height*coords.y));
+        button->maintainOriginalScale();
+        m_LandmarkButtons.push_back(button);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+/**
+ @brief     Set all of the landmarks on the map to their original scale.
+ @param     duration    How long in seconds it should take for the landmarks to scale.
+ @param     futureScale The scale that the Map is expected to be at at the end of the duration (use 0,0 for current).
+ */
+void Map::maintainScaleOfLandmarks(float duration, cocos2d::CCPoint futureScale)
+{
+    for (int landmarkIt = 0; landmarkIt < m_LandmarkButtons.size(); landmarkIt++)
+    {
+        m_LandmarkButtons[landmarkIt]->maintainOriginalScale(duration, futureScale);
+    }
 }
