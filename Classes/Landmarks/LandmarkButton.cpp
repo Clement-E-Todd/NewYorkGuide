@@ -8,10 +8,11 @@
 
 #include "LandmarkButton.h"
 #include "Defines.h"
+#include "LandmarkPopup.h"
 
 using namespace cocos2d;
 
-// A tag used to identify the CCAction that LanmarkButton::maintainOriginalScale(...) uses.
+// A tag used to identify the CCAction that LandmarkButton::maintainOriginalScale(...) uses.
 #define TAG_SCALE_ACTION    12345
 
 /**
@@ -44,7 +45,7 @@ bool LandmarkButton::init(Landmark landmark)
         return false;
     }
     
-    // Record the landmark data so that the Button can use it to create a LanmarkPopup when it is touched.
+    // Record the landmark data so that the Button can use it to create a LandmarkPopup when it is touched.
     m_Landmark = landmark;
     
     // Create a thumbnail sprite using the image file indicated by the landmark data.
@@ -141,4 +142,7 @@ void LandmarkButton::onTouchEnded()
     
     // Set the z order to be on same level as other buttons.
     setZOrder(0);
+    
+    // Display the popup.
+    LandmarkPopup::showPopup(m_Landmark);
 }

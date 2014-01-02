@@ -15,6 +15,12 @@
 		1102E4841863620B005B23E2 /* LandmarkPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1102E4821863620B005B23E2 /* LandmarkPopup.cpp */; };
 		1102E4871863671B005B23E2 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1102E4851863671B005B23E2 /* Button.cpp */; };
 		110CA5F6181AC81000513C8B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110CA5F5181AC81000513C8B /* CoreText.framework */; };
+		110E7ECF1874D7A90021328B /* WebLauncher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 110E7ECD1874D7A90021328B /* WebLauncher.mm */; };
+		112BA974186F29D100D3B8BF /* blankPixel.png in Resources */ = {isa = PBXBuildFile; fileRef = 112BA971186F29D100D3B8BF /* blankPixel.png */; };
+		112BA975186F29D100D3B8BF /* buttonNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 112BA972186F29D100D3B8BF /* buttonNormal.png */; };
+		112BA976186F29D100D3B8BF /* buttonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 112BA973186F29D100D3B8BF /* buttonPressed.png */; };
+		112BA979186F2C2A00D3B8BF /* Popup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 112BA977186F2C2A00D3B8BF /* Popup.cpp */; };
+		112BA97C186F39BE00D3B8BF /* Montserrat.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 112BA97B186F39BE00D3B8BF /* Montserrat.ttf */; };
 		113F960818616F7200628EA7 /* infoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F95DA18616F7200628EA7 /* infoButton.png */; };
 		113F960918616F7200628EA7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F95DC18616F7200628EA7 /* Default-568h@2x.png */; };
 		113F960A18616F7200628EA7 /* Default-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F95DD18616F7200628EA7 /* Default-iPad.png */; };
@@ -162,6 +168,14 @@
 		1102E4851863671B005B23E2 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 		1102E4861863671B005B23E2 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		110CA5F5181AC81000513C8B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		110E7ECD1874D7A90021328B /* WebLauncher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebLauncher.mm; sourceTree = "<group>"; };
+		110E7ECE1874D7A90021328B /* WebLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLauncher.h; sourceTree = "<group>"; };
+		112BA971186F29D100D3B8BF /* blankPixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankPixel.png; sourceTree = "<group>"; };
+		112BA972186F29D100D3B8BF /* buttonNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonNormal.png; sourceTree = "<group>"; };
+		112BA973186F29D100D3B8BF /* buttonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonPressed.png; sourceTree = "<group>"; };
+		112BA977186F2C2A00D3B8BF /* Popup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Popup.cpp; sourceTree = "<group>"; };
+		112BA978186F2C2A00D3B8BF /* Popup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Popup.h; sourceTree = "<group>"; };
+		112BA97B186F39BE00D3B8BF /* Montserrat.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Montserrat.ttf; sourceTree = "<group>"; };
 		113F95DA18616F7200628EA7 /* infoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoButton.png; sourceTree = "<group>"; };
 		113F95DC18616F7200628EA7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		113F95DD18616F7200628EA7 /* Default-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-iPad.png"; sourceTree = "<group>"; };
@@ -361,6 +375,8 @@
 			isa = PBXGroup;
 			children = (
 				1102E47118635FB5005B23E2 /* Defines.h */,
+				110E7ECD1874D7A90021328B /* WebLauncher.mm */,
+				110E7ECE1874D7A90021328B /* WebLauncher.h */,
 			);
 			name = Helpers;
 			path = ../Classes/Helpers;
@@ -400,19 +416,41 @@
 				1102E4861863671B005B23E2 /* Button.h */,
 				1102E47B18635FB5005B23E2 /* CompositeSprite.cpp */,
 				1102E47C18635FB5005B23E2 /* CompositeSprite.h */,
+				112BA977186F2C2A00D3B8BF /* Popup.cpp */,
+				112BA978186F2C2A00D3B8BF /* Popup.h */,
 			);
 			name = "User Interface";
 			path = ../Classes/UserInterface;
 			sourceTree = "<group>";
 		};
+		112BA970186F29D100D3B8BF /* userInterface */ = {
+			isa = PBXGroup;
+			children = (
+				112BA971186F29D100D3B8BF /* blankPixel.png */,
+				112BA972186F29D100D3B8BF /* buttonNormal.png */,
+				112BA973186F29D100D3B8BF /* buttonPressed.png */,
+			);
+			path = userInterface;
+			sourceTree = "<group>";
+		};
+		112BA97A186F39BE00D3B8BF /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				112BA97B186F39BE00D3B8BF /* Montserrat.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		113F95D918616F7200628EA7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				112BA97A186F39BE00D3B8BF /* fonts */,
 				113F95DA18616F7200628EA7 /* infoButton.png */,
 				1195FA911867CE8600E0818F /* infoButton2.png */,
 				113F95DB18616F7200628EA7 /* ios */,
 				1195FA931867D50D00E0818F /* landmarks */,
 				113F95F318616F7200628EA7 /* map */,
+				112BA970186F29D100D3B8BF /* userInterface */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -749,6 +787,7 @@
 				113F961118616F7200628EA7 /* Default@2x.png in Resources */,
 				113F963318616F7200628EA7 /* newYorkMap3x4.png in Resources */,
 				113F960C18616F7200628EA7 /* Default-Landscape@2x~ipad.png in Resources */,
+				112BA97C186F39BE00D3B8BF /* Montserrat.ttf in Resources */,
 				1195FAC31867D50E00E0818F /* strawberryFields.jpg in Resources */,
 				113F960B18616F7200628EA7 /* Default-iPad@2x.png in Resources */,
 				1195FAC11867D50E00E0818F /* statueOfLiberty.png in Resources */,
@@ -771,11 +810,13 @@
 				113F962D18616F7200628EA7 /* newYorkMap2x3.png in Resources */,
 				113F962918616F7200628EA7 /* newYorkMap1x4.png in Resources */,
 				113F960818616F7200628EA7 /* infoButton.png in Resources */,
+				112BA976186F29D100D3B8BF /* buttonPressed.png in Resources */,
 				113F962118616F7200628EA7 /* newYorkMap0x1.png in Resources */,
 				1195FAB21867D50E00E0818F /* carnegieHall.jpg in Resources */,
 				113F962018616F7200628EA7 /* newYorkMap0x0.png in Resources */,
 				113F961C18616F7200628EA7 /* Icon-58.png in Resources */,
 				113F962218616F7200628EA7 /* newYorkMap0x2.png in Resources */,
+				112BA974186F29D100D3B8BF /* blankPixel.png in Resources */,
 				113F962718616F7200628EA7 /* newYorkMap1x2.png in Resources */,
 				113F960918616F7200628EA7 /* Default-568h@2x.png in Resources */,
 				113F961218616F7200628EA7 /* Icon-100.png in Resources */,
@@ -785,6 +826,7 @@
 				113F961F18616F7200628EA7 /* Icon-80.png in Resources */,
 				1195FAC61867D50E00E0818F /* wallStreet.jpg in Resources */,
 				113F962E18616F7200628EA7 /* newYorkMap2x4.png in Resources */,
+				112BA975186F29D100D3B8BF /* buttonNormal.png in Resources */,
 				1195FAC01867D50E00E0818F /* rockefellerCenter.jpg in Resources */,
 				1195FAB51867D50E00E0818F /* chinaTown.jpg in Resources */,
 				113F962618616F7200628EA7 /* newYorkMap1x1.png in Resources */,
@@ -814,9 +856,11 @@
 				15A3DAEC1682F8A6002FB0C5 /* CDOpenALSupport.m in Sources */,
 				1102E47D18635FB5005B23E2 /* AppDelegate.cpp in Sources */,
 				15A3DAED1682F8A6002FB0C5 /* CocosDenshion.m in Sources */,
+				112BA979186F2C2A00D3B8BF /* Popup.cpp in Sources */,
 				1102E4841863620B005B23E2 /* LandmarkPopup.cpp in Sources */,
 				1102E4871863671B005B23E2 /* Button.cpp in Sources */,
 				15A3DAEE1682F8A6002FB0C5 /* SimpleAudioEngine.mm in Sources */,
+				110E7ECF1874D7A90021328B /* WebLauncher.mm in Sources */,
 				1102E48018635FB5005B23E2 /* MapScene.cpp in Sources */,
 				1102E47F18635FB5005B23E2 /* Map.cpp in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,

@@ -90,8 +90,8 @@ void Button::onExit()
     CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
     
     // Allow the callbacks to be taken by cocos2d's garbage collector.
-    m_CallbackOnPress->autorelease();
-    m_CallbackOnRelease->autorelease();
+    if (m_CallbackOnPress)   m_CallbackOnPress->autorelease();
+    if (m_CallbackOnRelease) m_CallbackOnRelease->autorelease();
     
     // Pass the onExit() call along to the base class.
     CCSprite::onExit();
