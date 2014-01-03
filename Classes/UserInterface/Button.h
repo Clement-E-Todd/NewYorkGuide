@@ -72,6 +72,11 @@ public:
      */
     bool isPressed();
     
+    /**
+     @brief     Set whether or not the Button will stay selected if the user's touch moves.
+     */
+    void allowTouchMovement(bool allow);
+    
 protected:
 
     /**
@@ -125,6 +130,12 @@ private:
     // The callbacks which should be executed when the button is pressed and released, respectively.
     cocos2d::CCCallFunc* m_CallbackOnPress;
     cocos2d::CCCallFunc* m_CallbackOnRelease;
+    
+    // Whether or not the Button will stay selected if the user's touch moves.
+    bool m_TouchMoveAllowed;
+    
+    // Whether or not the user's current touch has moved since it began.
+    bool m_TouchMoved;
     
 };
 

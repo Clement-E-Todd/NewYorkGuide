@@ -51,6 +51,9 @@ bool LandmarkButton::init(Landmark landmark)
     // Create a thumbnail sprite using the image file indicated by the landmark data.
     CCSprite* thumbnail = CCSprite::create(m_Landmark.imageFileName);
     
+    // If the user's finger moves between touching and releasing the LandmarkButton, the touch should be rejected.
+    allowTouchMovement(false);
+    
     // If the thumbnail was created successfully, add it as a child and end initialization.
     if (thumbnail)
     {
@@ -121,6 +124,36 @@ void LandmarkButton::onTouchBegan()
 {
     // Pass control on to the base class.
     Button::onTouchBegan();
+    
+    // Update the Button's scale.
+    maintainOriginalScale();
+    
+    // Set the z order to be in front of other buttons.
+    setZOrder(1);
+}
+
+/**
+ @brief     An extendable method which is called when an existing touch moves off of the button.
+ */
+void LandmarkButton::onTouchMovedOff()
+{
+    // Pass control on to the base class.
+    Button::onTouchMovedOff();
+    
+    // Update the Button's scale.
+    maintainOriginalScale();
+    
+    // Set the z order to be on same level as other buttons.
+    setZOrder(0);
+}
+
+/**
+ @brief     An extendable method which is called when an existing touch moves back onto the button.
+ */
+void LandmarkButton::onTouchMovedOn()
+{
+    // Pass control on to the base class.
+    Button::onTouchMovedOn();
     
     // Update the Button's scale.
     maintainOriginalScale();

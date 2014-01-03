@@ -49,6 +49,16 @@ protected:
     virtual void onTouchBegan();
     
     /**
+     @brief     An extendable method which is called when an existing touch moves off of the button.
+     */
+    virtual void onTouchMovedOff();
+    
+    /**
+     @brief     An extendable method which is called when an existing touch moves back onto the button.
+     */
+    virtual void onTouchMovedOn();
+    
+    /**
      @brief     An extendable method which is called when a touch ends on the button.
      */
     virtual void onTouchEnded();

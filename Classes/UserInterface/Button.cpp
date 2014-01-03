@@ -78,6 +78,9 @@ bool Button::init(const char* imageFilename, const char* pressedImageFilename,
     if (m_CallbackOnPress)   m_CallbackOnPress->retain();
     if (m_CallbackOnRelease) m_CallbackOnRelease->retain();
     
+    // By default, sliding your finger after touching the Button will not cncel the touch.
+    m_TouchMoveAllowed = true;
+    
     return true;
 }
 
@@ -105,10 +108,11 @@ void Button::onExit()
  */
 bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
-    // Perform the extendable "touch began" behaviour.
+    // Perform the extendable "touch began" behaviour and note that this touch hasn't moved yet.
     if (touchIsInBounds(pTouch))
     {
         onTouchBegan();
+        m_TouchMoved = false;
         return true;
     }
     
@@ -126,6 +130,18 @@ bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
  */
 void Button::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
+    // Make sure that Touch Move is allowed by this button before continuing.
+    if (!m_TouchMoveAllowed)
+    {
+        if (!m_TouchMoved)
+        {
+            m_TouchMoved = true;
+            onTouchMovedOff();
+        }
+        
+        return;
+    }
+    
     // Perform the extendable "touch moved off of button" behaviour if applicable...
     if (isPressed() && !touchIsInBounds(pTouch))
     {
@@ -146,6 +162,12 @@ void Button::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
  */
 void Button::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
+    // In the event that this Button disallows Touch Moves and a Touch Move was detected, ignore the Touch End logic.
+    if (!m_TouchMoveAllowed && m_TouchMoved)
+    {
+        return;
+    }
+    
     // Perform the extendable "touch ended" behaviour.
     if (touchIsInBounds(pTouch))
     {
@@ -224,4 +246,12 @@ bool Button::touchIsInBounds(cocos2d::CCTouch* touch)
     
     return (touchPositionLocal.x > 0 && touchPositionLocal.x <= getContentSize().width &&
             touchPositionLocal.y > 0 && touchPositionLocal.y <= getContentSize().height);
+}
+
+/**
+ @brief     Set whether or not the Button will stay selected if the user's touch moves.
+ */
+void Button::allowTouchMovement(bool allow)
+{
+    m_TouchMoveAllowed = allow;
 }
