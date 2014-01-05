@@ -41,25 +41,32 @@ bool NewYorkMap::init()
     addLandmark(Landmark("Madison\nSquare Garden",
                          "madisonSquareGarden",
                          "An indoor, mutli-purpose arena\nas well as New York's oldest and\nbusiest sporting venue.",
-                         "Madison+Square+Garden+NYC"),
+                         "Madison+Square+Garden+NYC",
+                         "http://www.thegarden.com/",
+                         "http://www.thegarden.com/calendar"),
                 ccp(0.425f, 0.64f));
     
     addLandmark(Landmark("Statue of Liberty",
                          "statueOfLiberty",
                          "A colossal monument in the image\nof Libertas, the Roman godess of\nfreedom. This statue was a gift from\nFrance and represents the idea\nof American liberty.",
-                         "Statue+of+Liberty+NYC"),
+                         "Statue+of+Liberty+NYC",
+                         "http://www.statueofliberty.org/",
+                         "https://www.statueoflibertytickets.com/"),
                 ccp(0.07f, 0.05f));
     
     addLandmark(Landmark("Ellis Island",
                          "ellisIsland",
                          "Once America's busiest immigration\ninspection station, Ellis Island is now\npart of the Statue of Liberty momument\nand hosts an immigration museum.",
-                         "Ellis+Island+NYC"),
+                         "Ellis+Island+NYC",
+                         "https://www.ellisisland.org/",
+                         "http://www.statueoflibertytickets.com/Ellis-Island-Tour/"),
                 ccp(0.07f, 0.2f));
     
     addLandmark(Landmark("9/11 Memorial",
                          "911memorial",
                          "A national tribute to the men, women\nand children killed in the terrorist\nattacks of 2001 and 1993.",
-                         "9+11+Memorial+NYC"),
+                         "9+11+Memorial+NYC",
+                         "http://www.911memorial.org/"),
                 ccp(0.28f, 0.24f));
     
     addLandmark(Landmark("Wall Street",
@@ -71,13 +78,15 @@ bool NewYorkMap::init()
     addLandmark(Landmark("Battery Park",
                          "batteryPark",
                          "Decades before Ellis Island or the\nStatue of Liberty were built, Battery\nPark welcomed new immigrants from\naround the world.",
-                         "Battery+Park+NYC"),
+                         "Battery+Park+NYC",
+                         "http://www.nycgovparks.org/parks/batterypark"),
                 ccp(0.245f, 0.14f));
     
     addLandmark(Landmark("Brookfield Place",
                          "worldFinancialCentre",
                          "Formerly known as the \"World\nFinancial Center\", Brookfield Place is\na complex of towering office\nbuildings in Lower Manhattan.",
-                         "Brookfield+Place+NYC"),
+                         "Brookfield+Place+NYC",
+                         "http://www.brookfieldplacenewsandevents.com/"),
                 ccp(0.28f, 0.34f));
     
     addLandmark(Landmark("Brooklyn nBridge",
@@ -89,13 +98,15 @@ bool NewYorkMap::init()
     addLandmark(Landmark("Chinatown",
                          "chinaTown",
                          "Chinatown is home to the largest\nenclave of Chinese people in the\nWestern Hemisphere as well as one\nof the largest Chinese populations.",
-                         "Chinatown+NYC"),
+                         "Chinatown+NYC",
+                         "http://www.explorechinatown.com/"),
                 ccp(0.44f, 0.31f));
     
     addLandmark(Landmark("East River Park",
                          "eastRiverPark",
                          "A 57.5-acre park stretching along the\nEast River which features an\namphitheater, numerous sports\ncourts and bike paths as well as\nother attractions.",
-                         "East+River+Park+NYC"),
+                         "East+River+Park+NYC",
+                         "http://www.nycgovparks.org/parks/eastriverpark"),
                 ccp(0.775f, 0.31f));
     
     addLandmark(Landmark("Saint Patrick's\nOld Catherdral",
@@ -125,61 +136,73 @@ bool NewYorkMap::init()
     addLandmark(Landmark("United Nations\nHeadquarters",
                          "unitedNationsHeadquarters",
                          "The headquarters of the United\nNations is a complex in\nNew York City.",
-                         "United+Nations+Headquarters+NYC"),
+                         "United+Nations+Headquarters+NYC",
+                         "http://www.un.org/cyberschoolbus/untour/subunh.htm"),
                 ccp(0.845f, 0.59f));
     
     addLandmark(Landmark("Times Square",
                          "timesSquare",
                          "Times Square is a major commercial\nintersection in Midtown Manhattan\nat the junction of Broadway and\nSeventh Avenue, stretching from\nWest 42nd to West 47th Streets.",
-                         "Times+Square+NYC"),
+                         "Times+Square+NYC",
+                         "http://www.timessquarenyc.org/"),
                 ccp(0.46f, 0.7f));
     
     addLandmark(Landmark("Rockefeller\nCenter",
                          "rockefellerCenter",
                          "Rockefeller Center is a complex of 19\ncommercial buildings covering\n22 acres between 48th and 51st\nstreets in New York City",
-                         "Rockefeller+Center+NYC"),
+                         "Rockefeller+Center+NYC",
+                         "http://www.rockefellercenter.com/"),
                 ccp(0.53f, 0.71f));
     
     addLandmark(Landmark("Carnegie Hall",
                          "carnegieHall",
                          "A concert venue in Midtown Manhattan,\nit is one of the most prestigious\nvenues in the world for both\nclassical music and\npopular music.",
-                         "Carnegie+Hall+NYC"),
+                         "Carnegie+Hall+NYC",
+                         "http://www.carnegiehall.org/‎",
+                         "http://www.carnegiehall.org/Calendar/"),
                 ccp(0.53f, 0.77f));
     
     addLandmark(Landmark("Broadway",
                          "broadway",
                          "A collection of high-calibur,\nworld-famous theatres.",
-                         "Broadway+NYC"),
+                         "Broadway+NYC",
+                         "", "http://www.broadway.com/"),
                 ccp(0.485f, 0.85f));
     
     addLandmark(Landmark("The\nMetropolitan\nOpera House",
                          "metropolitanOperaHouse",
                          "Home to the Met, which is the\nlargest classical music\norganization in North America.",
-                         "Metropolitan+Opera+NYC"),
+                         "Metropolitan+Opera+NYC",
+                         "www.metoperafamily.org/‎",
+                         "https://www.metoperafamily.org/metopera/season/index.aspx"),
                 ccp(0.5f, 0.92f));
     
     addLandmark(Landmark("Strawberry\nFields",
                          "strawberryFields",
                          "A section of Central Park dedicated to\nthe memory of Beatles member John\nLennon. It is named after the\n Beatles song \"Strawberry\nFields Forever\".",
-                         "Central+Park+NYC"),
+                         "Central+Park+NYC",
+                         "http://www.centralpark.com/guide/attractions/strawberry-fields.html"),
                 ccp(0.62f, 0.91f));
     
     addLandmark(Landmark("Central Park",
                          "centralPark",
                          "Central Park is an urban park in the\neastern portion of the central-\nupper West Side of Manhattan in\nNew York City.",
-                         "Central+Park+NYC"),
+                         "Central+Park+NYC",
+                         "http://www.centralpark.com/‎"),
                 ccp(0.7f, 0.975f));
     
     addLandmark(Landmark("Metropolitan\nMuseum of Art",
                          "metropolitanMuseumOfArt",
                          "The largest art museum in the\nUnited States, and one of the ten\nlargest in the world, with\nthe most significant\nart collections.",
-                         "Metropolitan+Museum+of+Art+NYC"),
+                         "Metropolitan+Museum+of+Art+NYC",
+                         "http://www.metmuseum.org/"),
                 ccp(0.77f, 0.96f));
     
     addLandmark(Landmark("Guggenheim\nMuseum",
                          "guggenheimMuseum",
                          "The Guggenheim is a world-reknowned\nart museum located on the Upper East\nSide of Manhattan in New York City.",
-                         "Guggenheim+NYC"),
+                         "Guggenheim+NYC",
+                         "http://www.guggenheim.org/"),
                 ccp(0.91f, 0.94f));
     
     return true;

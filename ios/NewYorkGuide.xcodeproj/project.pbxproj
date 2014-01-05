@@ -121,6 +121,7 @@
 		1193D9161879D9E600B11DB6 /* wallStreet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D8E31879D9E600B11DB6 /* wallStreet.png */; };
 		1193D9171879D9E600B11DB6 /* worldFinancialCentre_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D8E41879D9E600B11DB6 /* worldFinancialCentre_mini.png */; };
 		1193D9181879D9E600B11DB6 /* worldFinancialCentre.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D8E51879D9E600B11DB6 /* worldFinancialCentre.png */; };
+		1193D91B1879E02300B11DB6 /* WebLauncher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1193D9191879E02300B11DB6 /* WebLauncher.mm */; };
 		1195FACF1867E70700E0818F /* NewYorkMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1195FACD1867E70700E0818F /* NewYorkMap.cpp */; };
 		11CFF5E317D7794400240EE3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CFF5E217D7794400240EE3 /* StoreKit.framework */; };
 		11F93B5C1803219100232A9F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F93B5B1803219100232A9F /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -305,6 +306,8 @@
 		1193D8E31879D9E600B11DB6 /* wallStreet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wallStreet.png; sourceTree = "<group>"; };
 		1193D8E41879D9E600B11DB6 /* worldFinancialCentre_mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldFinancialCentre_mini.png; sourceTree = "<group>"; };
 		1193D8E51879D9E600B11DB6 /* worldFinancialCentre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = worldFinancialCentre.png; sourceTree = "<group>"; };
+		1193D9191879E02300B11DB6 /* WebLauncher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebLauncher.mm; sourceTree = "<group>"; };
+		1193D91A1879E02300B11DB6 /* WebLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLauncher.h; sourceTree = "<group>"; };
 		1195FACC1867DAFF00E0818F /* Landmark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Landmark.h; sourceTree = "<group>"; };
 		1195FACD1867E70700E0818F /* NewYorkMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewYorkMap.cpp; sourceTree = "<group>"; };
 		1195FACE1867E70700E0818F /* NewYorkMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewYorkMap.h; sourceTree = "<group>"; };
@@ -439,6 +442,8 @@
 				1102E47118635FB5005B23E2 /* Defines.h */,
 				1193D8AD1879AD1400B11DB6 /* GoogleMapsLauncher.mm */,
 				1193D8AE1879AD1400B11DB6 /* GoogleMapsLauncher.h */,
+				1193D9191879E02300B11DB6 /* WebLauncher.mm */,
+				1193D91A1879E02300B11DB6 /* WebLauncher.h */,
 			);
 			name = Helpers;
 			path = ../Classes/Helpers;
@@ -977,6 +982,7 @@
 				1102E47F18635FB5005B23E2 /* Map.cpp in Sources */,
 				1193D8AF1879AD1400B11DB6 /* GoogleMapsLauncher.mm in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
+				1193D91B1879E02300B11DB6 /* WebLauncher.mm in Sources */,
 				1193D8B21879CDD500B11DB6 /* HidingSprite.cpp in Sources */,
 				1102E48118635FB5005B23E2 /* CompositeSprite.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,

@@ -9,6 +9,7 @@
 #include "LandmarkPopup.h"
 #include "Defines.h"
 #include "GoogleMapsLauncher.h"
+#include "WebLauncher.h"
 
 using namespace cocos2d;
 
@@ -81,6 +82,18 @@ bool LandmarkPopup::init(Landmark landmark)
         addButton("Get Directions", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::getDirections)), ccORANGE);
     }
     
+    // If a website URL was provided, add a linking button.
+    if (landmark.websiteURL != NULL && landmark.websiteURL[0] != '\0')
+    {
+        addButton("Visit Website", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::launchWebsite)), ccBLUE);
+    }
+    
+    // If a ticketing URL was provided, add a linking button
+    if (landmark.ticketsURL != NULL && landmark.ticketsURL[0] != '\0')
+    {
+        addButton("Get Tickets", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::launchTicketWebsite)), ccYELLOW);
+    }
+    
     // Finally, add a button to close the popup.
     addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::removeFromParent)), ccRED);
     
@@ -105,4 +118,26 @@ void LandmarkPopup::onExit()
 void LandmarkPopup::getDirections()
 {
     GoogleMapsLauncher::showDirections(m_Landmark.address);
+}
+
+/**
+ @brief     Launch the landmark's official website.
+ */
+void LandmarkPopup::launchWebsite()
+{
+    if (m_Landmark.websiteURL != NULL && m_Landmark.websiteURL[0] != '\0')
+    {
+        WebLauncher::launchBrowserWithURL(m_Landmark.websiteURL);
+    }
+}
+
+/**
+ @brief     Launch the website where tickets for the landmark can be purchased.
+ */
+void LandmarkPopup::launchTicketWebsite()
+{
+    if (m_Landmark.ticketsURL != NULL && m_Landmark.ticketsURL[0] != '\0')
+    {
+        WebLauncher::launchBrowserWithURL(m_Landmark.ticketsURL);
+    }
 }

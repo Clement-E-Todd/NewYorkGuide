@@ -52,6 +52,16 @@ protected:
      */
     void getDirections();
     
+    /**
+     @brief     Launch the landmark's official website.
+     */
+    void launchWebsite();
+    
+    /**
+     @brief     Launch the website where tickets for the landmark can be purchased.
+     */
+    void launchTicketWebsite();
+    
 private:
     
     // The Landmark data being presented by the popup
