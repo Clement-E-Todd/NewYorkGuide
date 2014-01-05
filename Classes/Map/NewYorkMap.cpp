@@ -72,7 +72,7 @@ bool NewYorkMap::init()
     addLandmark(Landmark("Wall Street",
                          "wallStreet",
                          "Stretching from Broadway to\nSouth Street on the East River,\nWall Street is the financial district\nof New York City and home to the\nNew York Stock Exchange.",
-                         "Wall+Street+NYC"),
+                         "NY+10004"),
                 ccp(0.385f, 0.14f));
     
     addLandmark(Landmark("Battery Park",
@@ -89,9 +89,9 @@ bool NewYorkMap::init()
                          "http://www.brookfieldplacenewsandevents.com/"),
                 ccp(0.28f, 0.34f));
     
-    addLandmark(Landmark("Brooklyn nBridge",
+    addLandmark(Landmark("Brooklyn Bridge",
                          "brooklynBridge",
-                         "Spanning the East River and connecting\nBrooklyn to the boroughs of Manhattan,\nthe Brooklyn Bridge is one of the\noldest suspension bridges\nin the country.",
+                         "Spanning the East River and\nconnecting Brooklyn to the\nboroughs of Manhattan,the\nBrooklyn Bridge is one of the\noldest suspension bridges\nin the country.",
                          "Brooklyn+Bridge+NYC"),
                 ccp(0.55f, 0.1f));
     
