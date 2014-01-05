@@ -124,6 +124,7 @@
 		1193D9211879F9CD00B11DB6 /* landmarkButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D91D1879F9CD00B11DB6 /* landmarkButtonPressed.png */; };
 		1193D9221879F9CD00B11DB6 /* loadingBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D91E1879F9CD00B11DB6 /* loadingBorder.png */; };
 		1193D9231879F9CD00B11DB6 /* loadingProgress.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D91F1879F9CD00B11DB6 /* loadingProgress.png */; };
+		1193D9261879FE0300B11DB6 /* LoadingPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1193D9241879FE0300B11DB6 /* LoadingPopup.cpp */; };
 		1195FACF1867E70700E0818F /* NewYorkMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1195FACD1867E70700E0818F /* NewYorkMap.cpp */; };
 		11CFF5E317D7794400240EE3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CFF5E217D7794400240EE3 /* StoreKit.framework */; };
 		11F93B5C1803219100232A9F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F93B5B1803219100232A9F /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -312,6 +313,8 @@
 		1193D91D1879F9CD00B11DB6 /* landmarkButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landmarkButtonPressed.png; sourceTree = "<group>"; };
 		1193D91E1879F9CD00B11DB6 /* loadingBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingBorder.png; sourceTree = "<group>"; };
 		1193D91F1879F9CD00B11DB6 /* loadingProgress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingProgress.png; sourceTree = "<group>"; };
+		1193D9241879FE0300B11DB6 /* LoadingPopup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingPopup.cpp; sourceTree = "<group>"; };
+		1193D9251879FE0300B11DB6 /* LoadingPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingPopup.h; sourceTree = "<group>"; };
 		1195FACC1867DAFF00E0818F /* Landmark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Landmark.h; sourceTree = "<group>"; };
 		1195FACD1867E70700E0818F /* NewYorkMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewYorkMap.cpp; sourceTree = "<group>"; };
 		1195FACE1867E70700E0818F /* NewYorkMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewYorkMap.h; sourceTree = "<group>"; };
@@ -491,6 +494,8 @@
 				1193D8B11879CDD500B11DB6 /* HidingSprite.h */,
 				112BA977186F2C2A00D3B8BF /* Popup.cpp */,
 				112BA978186F2C2A00D3B8BF /* Popup.h */,
+				1193D9241879FE0300B11DB6 /* LoadingPopup.cpp */,
+				1193D9251879FE0300B11DB6 /* LoadingPopup.h */,
 			);
 			name = "User Interface";
 			path = ../Classes/UserInterface;
@@ -990,6 +995,7 @@
 				1102E47F18635FB5005B23E2 /* Map.cpp in Sources */,
 				1193D8AF1879AD1400B11DB6 /* GoogleMapsLauncher.mm in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
+				1193D9261879FE0300B11DB6 /* LoadingPopup.cpp in Sources */,
 				1193D91B1879E02300B11DB6 /* WebLauncher.mm in Sources */,
 				1193D8B21879CDD500B11DB6 /* HidingSprite.cpp in Sources */,
 				1102E48118635FB5005B23E2 /* CompositeSprite.cpp in Sources */,

@@ -10,11 +10,12 @@
 #define NEW_YORK_MAP_H
 
 #include "Map.h"
+#include "CompositeSprite.h"
 
 /**
  @brief     An extension of the Map class specifically set up to display information on Manhattan.
  */
-class NewYorkMap : public Map
+class NewYorkMap : public Map, public CompositeSpriteObserver
 {
 public:
     
@@ -23,6 +24,11 @@ public:
      @return    A pointer to the newly created NewYorkMap.
      */
     static NewYorkMap* create();
+    
+    /**
+     @brief     Reaction to the end of a CompositeSprite's loading cycle.
+     */
+    void compositeSpriteFinishedLoading(CompositeSprite* sprite);
     
 protected:
     

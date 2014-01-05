@@ -31,9 +31,30 @@ NewYorkMap* NewYorkMap::create()
  */
 bool NewYorkMap::init()
 {
-    if (!Map::init(CompositeSprite::create("newYorkMap", ".png", 4, 5)))
+    // Set up the image data for the map to load.
+    CompositeSprite* mapSprite = CompositeSprite::create("newYorkMap", ".png", 4, 5, NULL);
+    
+    if (mapSprite)
+    {
+        addChild(mapSprite);
+        mapSprite->setVisible(false);
+        mapSprite->addObserver(this);
+        return true;
+    }
+    else
     {
         return false;
+    }
+}
+
+/**
+ @brief     Reaction to the end of a CompositeSprite's loading cycle.
+ */
+void NewYorkMap::compositeSpriteFinishedLoading(CompositeSprite* sprite)
+{
+    if (!Map::init(sprite))
+    {
+        removeFromParentAndCleanup(true);
     }
     
     // Add the landmarks to the map.
@@ -204,6 +225,4 @@ bool NewYorkMap::init()
                          "Guggenheim+NYC",
                          "http://www.guggenheim.org/"),
                 ccp(0.91f, 0.94f));
-    
-    return true;
 }

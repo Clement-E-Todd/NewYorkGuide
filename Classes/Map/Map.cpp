@@ -43,15 +43,16 @@ bool Map::init(CCNode *mapNode)
     
     // Register and add the map node
     m_MapNode = mapNode;
-    addChild(m_MapNode);
+    if (!m_MapNode->getParent()) addChild(m_MapNode);
     
     // Set the default spacial information for both the map and map node
     setContentSize(m_MapNode->getContentSize());
     setAnchorPoint(m_MapNode->getAnchorPoint());
     m_MapNode->setPosition(ccp(getContentSize().width * getAnchorPoint().x, getContentSize().height * getAnchorPoint().y));
+    m_MapNode->setVisible(true);
     setScale((MIN_SCALE + MAX_SCALE) / 2);
     
-    return m_MapNode;
+    return m_MapNode != NULL;
 }
 
 /**
