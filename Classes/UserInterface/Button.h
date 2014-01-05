@@ -10,11 +10,12 @@
 #define BUTTON_H
 
 #include "cocos2d.h"
+#include "HidingSprite.h"
 
 /**
  @brief    A sprite node which will execute specified callbacks when touched and released.
  */
-class Button : public cocos2d::CCSprite, public cocos2d::CCTouchDelegate
+class Button : public HidingSprite, public cocos2d::CCTouchDelegate
 {
 public:
 

@@ -40,7 +40,7 @@ protected:
      @return    true    The CompositeSprite was initialized successfully.
      @return    false   The CompositeSprite failed to initialize.
      */
-    virtual bool init(const char *fileName, const char* fileExtension, unsigned int gridWidth, unsigned int gridHeight);
+    virtual bool init(const char *fileName, const char* fileExtension, unsigned int gridWidth, unsigned int gridHeight); 
 };
 
 #endif // COMPOSITE_SPRITE_H

@@ -43,6 +43,11 @@ protected:
     bool init(Landmark landmark);
     
     /**
+     @brief Called when the popup is removed from the node tree.
+     */
+    void onExit();
+    
+    /**
      @brief     Display directions to this landmark with Google Maps.
      */
     void getDirections();
@@ -51,6 +56,9 @@ private:
     
     // The Landmark data being presented by the popup
     Landmark m_Landmark;
+    
+    // The texture used for the image.
+    cocos2d::CCTexture2D* m_Texture;
 };
 
 #endif // LANDMARK_POPUP_H

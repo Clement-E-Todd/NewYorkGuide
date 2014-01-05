@@ -7,12 +7,13 @@
 //
 
 #include "CompositeSprite.h"
+#include "HidingSprite.h"
 
 using namespace std;
 using namespace cocos2d;
 
 /**
- @brief     Create an CompositeSprite instance with a grid of CCSprites.
+ @brief     Create an CompositeSprite instance with a grid of sprites.
  @param     fileName        The part of the file's name which comes before its alignment.
  @param     fileExtension   The file extension shared by all sprites in the grid.
  @param     gridWidth       The number of images to be found width-wise in the grid.
@@ -32,7 +33,7 @@ CompositeSprite* CompositeSprite::create(const char *fileName, const char* fileE
 }
 
 /**
- @brief     Initialize the CompositeSprite by populating it with its CCSprite children.
+ @brief     Initialize the CompositeSprite by populating it with its sprite children.
  @param     fileName        The part of the file's name which comes before its alignment.
  @param     fileExtension   The file extension shared by all sprites in the grid.
  @param     gridWidth       The number of images to be found width-wise in the grid.
@@ -42,15 +43,15 @@ CompositeSprite* CompositeSprite::create(const char *fileName, const char* fileE
  */
 bool CompositeSprite::init(const char *fileName, const char* fileExtension, unsigned int gridWidth, unsigned int gridHeight)
 {
-    // Find a group of image files beginning in [fileName] and ending in [fileExtension] with grid position indicated between (ie. "imageName3x2.png") and load each of them in as CCSprites, adding them as children in a grid.
+    // Find a group of image files beginning in [fileName] and ending in [fileExtension] with grid position indicated between (ie. "imageName3x2.png") and load each of them in as HidingSprites, adding them as children in a grid.
     CCLOG("*** Creating a CompositeSprite using files beginning with \"%s\" and ending with \"%s\".", fileName, fileExtension);
     
-    vector<vector<CCSprite*> > spriteGrid;
+    vector<vector<HidingSprite*> > spriteGrid;
     
-    // Populate the sprite grid with CCSprites, positioning each one correctly and updating the CompositeSprite's content size.
+    // Populate the sprite grid with HidingSprites, positioning each one correctly and updating the CompositeSprite's content size.
     for (unsigned int colomn = 0; colomn < gridWidth; colomn++)
     {
-        spriteGrid.push_back(vector<CCSprite*>());
+        spriteGrid.push_back(vector<HidingSprite*>());
         
         for (unsigned int row = 0; row < gridHeight; row++)
         {
@@ -70,7 +71,7 @@ bool CompositeSprite::init(const char *fileName, const char* fileExtension, unsi
             fullFileName += string(fileExtension);
             
             // Attempt to load a file with the specified name.
-            CCSprite* sprite = CCSprite::create(fullFileName.c_str());
+            HidingSprite* sprite = HidingSprite::create(fullFileName.c_str());
             
             if (sprite)
             {

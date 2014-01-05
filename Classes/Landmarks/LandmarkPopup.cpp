@@ -65,7 +65,10 @@ bool LandmarkPopup::init(Landmark landmark)
     addContent(CCLabelTTF::create(landmark.name, "Montserrat", 150 * SCREEN_SCALE));
     
     // Add the image illustrating the landmark.
-    CCSprite* image = CCSprite::create(landmark.imageFileName);
+    char fullFileName[64];
+    sprintf(fullFileName, "%s.png", m_Landmark.imageFileName);
+    m_Texture = CCTextureCache::sharedTextureCache()->addImage(fullFileName);
+    CCSprite* image = CCSprite::createWithTexture(m_Texture);
     image->setScale(SCREEN_SCALE);
     addContent(image);
     
@@ -82,6 +85,18 @@ bool LandmarkPopup::init(Landmark landmark)
     addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::removeFromParent)), ccRED);
     
     return true;
+}
+
+/**
+ @brief Called when the popup is removed from the node tree.
+ */
+void LandmarkPopup::onExit()
+{
+    // Remove the texture from the texture cache to free up memory.
+    CCTextureCache::sharedTextureCache()->removeTexture(m_Texture);
+    
+    // Pass control along to the base class.
+    Popup::onExit();
 }
 
 /**

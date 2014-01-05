@@ -48,18 +48,19 @@ bool LandmarkButton::init(Landmark landmark)
     // Record the landmark data so that the Button can use it to create a LandmarkPopup when it is touched.
     m_Landmark = landmark;
     
-    // Create a thumbnail sprite using the image file indicated by the landmark data.
-    CCSprite* thumbnail = CCSprite::create(m_Landmark.imageFileName);
-    
     // If the user's finger moves between touching and releasing the LandmarkButton, the touch should be rejected.
     allowTouchMovement(false);
+    
+    // Create a thumbnail sprite using the image file indicated by the landmark data.
+    char fullFileName[64];
+    sprintf(fullFileName, "%s_mini.png", m_Landmark.imageFileName);
+    CCSprite* thumbnail = CCSprite::create(fullFileName);
     
     // If the thumbnail was created successfully, add it as a child and end initialization.
     if (thumbnail)
     {
         addChild(thumbnail);
         thumbnail->setPosition(ccp(getContentSize().width/2, getContentSize().height/2));
-        thumbnail->setScale(0.375f); // Shrink the thumnail down to fit on the button.
         
         return true;
     }
