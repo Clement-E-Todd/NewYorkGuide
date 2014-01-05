@@ -8,7 +8,6 @@
 
 #include "LandmarkPopup.h"
 #include "Defines.h"
-#include "WebLauncher.h"
 
 using namespace cocos2d;
 
@@ -68,40 +67,8 @@ bool LandmarkPopup::init(Landmark landmark)
     addContent(image);
     
     addContent(CCLabelTTF::create(landmark.description, "Montserrat", 75 * SCREEN_SCALE));
-
-    if (landmark.websiteURL != NULL && landmark.websiteURL[0] != '\0')
-    {
-        addButton("Visit Website", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::launchWebsite)), ccBLUE);
-    }
-    
-    if (landmark.ticketsURL != NULL && landmark.ticketsURL[0] != '\0')
-    {
-        addButton("Get Tickets", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::launchTicketWebsite)), ccYELLOW);
-    }
     
     addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::removeFromParent)), ccRED);
     
     return true;
-}
-
-/**
- @brief     Launch the landmark's official website.
- */
-void LandmarkPopup::launchWebsite()
-{
-    if (m_Landmark.websiteURL != NULL && m_Landmark.websiteURL[0] != '\0')
-    {
-        WebLauncher::launchBrowserWithURL(m_Landmark.websiteURL);
-    }
-}
-
-/**
- @brief     Launch the website where tickets for the landmark can be purchased.
- */
-void LandmarkPopup::launchTicketWebsite()
-{
-    if (m_Landmark.ticketsURL != NULL && m_Landmark.ticketsURL[0] != '\0')
-    {
-        WebLauncher::launchBrowserWithURL(m_Landmark.ticketsURL);
-    }
 }

@@ -23,12 +23,6 @@ struct Landmark
     // A brief description of the landmark.
     const char* description;
     
-    // The URL of the landmark's website (optional, set to "" for none).
-    const char* websiteURL;
-    
-    // The URL for buying tickets to the landmark if applicable (also optional).
-    const char* ticketsURL;
-    
     /**
      @brief     Default consructor which sets no data.
      */
@@ -39,20 +33,14 @@ struct Landmark
      @param     name            The landmark's title.
      @param     imageFileName   The file name of the image representing this landmark.
      @param     description     A brief description of the landmark.
-     @param     websiteURL      The URL of the landmark's website (optional, set to "" for none).
-     @param     ticketsURL      The URL for buying tickets to the landmark if applicable (also optional).
      */
     Landmark(const char* name,
              const char* imageFileName,
-             const char* description,
-             const char* websiteURL = "",
-             const char* ticketsURL = "")
+             const char* description)
     {
         this->name = name;
         this->imageFileName = imageFileName;
         this->description = description;
-        this->websiteURL = websiteURL;
-        this->ticketsURL = ticketsURL;
     }
 };
 

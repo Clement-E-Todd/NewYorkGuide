@@ -15,7 +15,6 @@
 		1102E4841863620B005B23E2 /* LandmarkPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1102E4821863620B005B23E2 /* LandmarkPopup.cpp */; };
 		1102E4871863671B005B23E2 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1102E4851863671B005B23E2 /* Button.cpp */; };
 		110CA5F6181AC81000513C8B /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110CA5F5181AC81000513C8B /* CoreText.framework */; };
-		110E7ECF1874D7A90021328B /* WebLauncher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 110E7ECD1874D7A90021328B /* WebLauncher.mm */; };
 		112BA974186F29D100D3B8BF /* blankPixel.png in Resources */ = {isa = PBXBuildFile; fileRef = 112BA971186F29D100D3B8BF /* blankPixel.png */; };
 		112BA975186F29D100D3B8BF /* buttonNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 112BA972186F29D100D3B8BF /* buttonNormal.png */; };
 		112BA976186F29D100D3B8BF /* buttonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 112BA973186F29D100D3B8BF /* buttonPressed.png */; };
@@ -168,8 +167,6 @@
 		1102E4851863671B005B23E2 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
 		1102E4861863671B005B23E2 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
 		110CA5F5181AC81000513C8B /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		110E7ECD1874D7A90021328B /* WebLauncher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WebLauncher.mm; sourceTree = "<group>"; };
-		110E7ECE1874D7A90021328B /* WebLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebLauncher.h; sourceTree = "<group>"; };
 		112BA971186F29D100D3B8BF /* blankPixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankPixel.png; sourceTree = "<group>"; };
 		112BA972186F29D100D3B8BF /* buttonNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonNormal.png; sourceTree = "<group>"; };
 		112BA973186F29D100D3B8BF /* buttonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonPressed.png; sourceTree = "<group>"; };
@@ -375,8 +372,6 @@
 			isa = PBXGroup;
 			children = (
 				1102E47118635FB5005B23E2 /* Defines.h */,
-				110E7ECD1874D7A90021328B /* WebLauncher.mm */,
-				110E7ECE1874D7A90021328B /* WebLauncher.h */,
 			);
 			name = Helpers;
 			path = ../Classes/Helpers;
@@ -860,7 +855,6 @@
 				1102E4841863620B005B23E2 /* LandmarkPopup.cpp in Sources */,
 				1102E4871863671B005B23E2 /* Button.cpp in Sources */,
 				15A3DAEE1682F8A6002FB0C5 /* SimpleAudioEngine.mm in Sources */,
-				110E7ECF1874D7A90021328B /* WebLauncher.mm in Sources */,
 				1102E48018635FB5005B23E2 /* MapScene.cpp in Sources */,
 				1102E47F18635FB5005B23E2 /* Map.cpp in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
