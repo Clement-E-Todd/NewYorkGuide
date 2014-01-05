@@ -11,6 +11,9 @@
 #include "GoogleMapsLauncher.h"
 #include "WebLauncher.h"
 
+#define COLOUR_BUTTON_NORMAL    ccc3(0, 150, 141)
+#define COLOUR_BUTTON_CLOSE     ccc3(0, 92, 115)
+
 using namespace cocos2d;
 
 /**
@@ -79,23 +82,23 @@ bool LandmarkPopup::init(Landmark landmark)
     // If an address was provided, add a button to get directions to this landmark.
     if (landmark.address != NULL && landmark.address[0] != '\0')
     {
-        addButton("Get Directions", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::getDirections)), ccORANGE);
+        addButton("Get Directions", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::getDirections)), COLOUR_BUTTON_NORMAL);
     }
     
     // If a website URL was provided, add a linking button.
     if (landmark.websiteURL != NULL && landmark.websiteURL[0] != '\0')
     {
-        addButton("Visit Website", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::launchWebsite)), ccBLUE);
+        addButton("Visit Website", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::launchWebsite)), COLOUR_BUTTON_NORMAL);
     }
     
     // If a ticketing URL was provided, add a linking button
     if (landmark.ticketsURL != NULL && landmark.ticketsURL[0] != '\0')
     {
-        addButton("Get Tickets", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::launchTicketWebsite)), ccYELLOW);
+        addButton("Get Tickets", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::launchTicketWebsite)), COLOUR_BUTTON_NORMAL);
     }
     
     // Finally, add a button to close the popup.
-    addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::removeFromParent)), ccRED);
+    addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::removeFromParent)), COLOUR_BUTTON_CLOSE);
     
     return true;
 }
