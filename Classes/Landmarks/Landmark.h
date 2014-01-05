@@ -23,6 +23,9 @@ struct Landmark
     // A brief description of the landmark.
     const char* description;
     
+    // An address to be used by the Google Maps SDK in order to show directions to this landmark.
+    const char* address;
+    
     /**
      @brief     Default consructor which sets no data.
      */
@@ -33,14 +36,17 @@ struct Landmark
      @param     name            The landmark's title.
      @param     imageFileName   The file name of the image representing this landmark.
      @param     description     A brief description of the landmark.
+     @param     address         An address to be used by the Google Maps SDK in order to show directions to this landmark.
      */
     Landmark(const char* name,
              const char* imageFileName,
-             const char* description)
+             const char* description,
+             const char* address = NULL)
     {
         this->name = name;
         this->imageFileName = imageFileName;
         this->description = description;
+        this->address = address;
     }
 };
 

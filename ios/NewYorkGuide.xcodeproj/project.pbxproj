@@ -64,6 +64,13 @@
 		113F963118616F7200628EA7 /* newYorkMap3x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F960518616F7200628EA7 /* newYorkMap3x2.png */; };
 		113F963218616F7200628EA7 /* newYorkMap3x3.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F960618616F7200628EA7 /* newYorkMap3x3.png */; };
 		113F963318616F7200628EA7 /* newYorkMap3x4.png in Resources */ = {isa = PBXBuildFile; fileRef = 113F960718616F7200628EA7 /* newYorkMap3x4.png */; };
+		1193D8A21879A9BA00B11DB6 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1193D8A11879A9BA00B11DB6 /* GoogleMaps.framework */; };
+		1193D8A41879A9F100B11DB6 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1193D8A31879A9F100B11DB6 /* GoogleMaps.bundle */; };
+		1193D8A61879AA6E00B11DB6 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1193D8A51879AA6E00B11DB6 /* GLKit.framework */; };
+		1193D8A81879AA7500B11DB6 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1193D8A71879AA7500B11DB6 /* ImageIO.framework */; };
+		1193D8AA1879AA8A00B11DB6 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1193D8A91879AA8A00B11DB6 /* libc++.dylib */; };
+		1193D8AC1879AA9E00B11DB6 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1193D8AB1879AA9E00B11DB6 /* libicucore.dylib */; };
+		1193D8AF1879AD1400B11DB6 /* GoogleMapsLauncher.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1193D8AD1879AD1400B11DB6 /* GoogleMapsLauncher.mm */; };
 		1195FA921867CE8600E0818F /* infoButton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1195FA911867CE8600E0818F /* infoButton2.png */; };
 		1195FAAE1867D50E00E0818F /* 911memorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 1195FA941867D50D00E0818F /* 911memorial.png */; };
 		1195FAAF1867D50E00E0818F /* batteryPark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1195FA951867D50D00E0818F /* batteryPark.jpg */; };
@@ -217,6 +224,14 @@
 		113F960518616F7200628EA7 /* newYorkMap3x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newYorkMap3x2.png; sourceTree = "<group>"; };
 		113F960618616F7200628EA7 /* newYorkMap3x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newYorkMap3x3.png; sourceTree = "<group>"; };
 		113F960718616F7200628EA7 /* newYorkMap3x4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newYorkMap3x4.png; sourceTree = "<group>"; };
+		1193D8A11879A9BA00B11DB6 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = ../ExternalFrameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		1193D8A31879A9F100B11DB6 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = ../ExternalFrameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		1193D8A51879AA6E00B11DB6 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		1193D8A71879AA7500B11DB6 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1193D8A91879AA8A00B11DB6 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		1193D8AB1879AA9E00B11DB6 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		1193D8AD1879AD1400B11DB6 /* GoogleMapsLauncher.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GoogleMapsLauncher.mm; sourceTree = "<group>"; };
+		1193D8AE1879AD1400B11DB6 /* GoogleMapsLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMapsLauncher.h; sourceTree = "<group>"; };
 		1195FA911867CE8600E0818F /* infoButton2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infoButton2.png; sourceTree = "<group>"; };
 		1195FA941867D50D00E0818F /* 911memorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 911memorial.png; sourceTree = "<group>"; };
 		1195FA951867D50D00E0818F /* batteryPark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = batteryPark.jpg; sourceTree = "<group>"; };
@@ -306,12 +321,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11F93B7A1803305F00232A9F /* SystemConfiguration.framework in Frameworks */,
+				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
+				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
+				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
+				1193D8AC1879AA9E00B11DB6 /* libicucore.dylib in Frameworks */,
+				1193D8AA1879AA8A00B11DB6 /* libc++.dylib in Frameworks */,
+				1193D8A81879AA7500B11DB6 /* ImageIO.framework in Frameworks */,
+				1193D8A61879AA6E00B11DB6 /* GLKit.framework in Frameworks */,
 				110CA5F6181AC81000513C8B /* CoreText.framework in Frameworks */,
+				11F93B6618032FD700232A9F /* CoreLocation.framework in Frameworks */,
+				11F93B5E180321A000232A9F /* CoreData.framework in Frameworks */,
+				D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				11F93B7C1803306700232A9F /* Twitter.framework in Frameworks */,
-				11F93B7A1803305F00232A9F /* SystemConfiguration.framework in Frameworks */,
 				11F93B781803305000232A9F /* Social.framework in Frameworks */,
-				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
 				11F93B761803304000232A9F /* MobileCoreServices.framework in Frameworks */,
 				11F93B741803303300232A9F /* MessageUI.framework in Frameworks */,
 				11F93B721803302900232A9F /* MediaPlayer.framework in Frameworks */,
@@ -321,21 +345,17 @@
 				11F93B6C18032FFB00232A9F /* EventKitUI.framework in Frameworks */,
 				11F93B6A18032FF600232A9F /* EventKit.framework in Frameworks */,
 				11F93B6818032FE200232A9F /* CoreMotion.framework in Frameworks */,
-				11F93B6618032FD700232A9F /* CoreLocation.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				11F93B6418032FC000232A9F /* CFNetwork.framework in Frameworks */,
 				11F93B6218032FB300232A9F /* AdSupport.framework in Frameworks */,
-				11F93B5E180321A000232A9F /* CoreData.framework in Frameworks */,
 				11F93B5C1803219100232A9F /* CoreTelephony.framework in Frameworks */,
 				15A3DA6A1682F886002FB0C5 /* libcocos2dx.a in Frameworks */,
 				1ACB3244164770DE00914215 /* libcurl.a in Frameworks */,
-				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712461292920000B8313A /* libxml2.dylib in Frameworks */,
-				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
-				D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */,
 				D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */,
 				1AB8703C175E0A92005D39BF /* libwebsockets.a in Frameworks */,
+				1193D8A21879A9BA00B11DB6 /* GoogleMaps.framework in Frameworks */,
 				11CFF5E317D7794400240EE3 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				1102E47118635FB5005B23E2 /* Defines.h */,
+				1193D8AD1879AD1400B11DB6 /* GoogleMapsLauncher.mm */,
+				1193D8AE1879AD1400B11DB6 /* GoogleMapsLauncher.h */,
 			);
 			name = Helpers;
 			path = ../Classes/Helpers;
@@ -659,6 +681,12 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1193D8AB1879AA9E00B11DB6 /* libicucore.dylib */,
+				1193D8A91879AA8A00B11DB6 /* libc++.dylib */,
+				1193D8A71879AA7500B11DB6 /* ImageIO.framework */,
+				1193D8A51879AA6E00B11DB6 /* GLKit.framework */,
+				1193D8A11879A9BA00B11DB6 /* GoogleMaps.framework */,
+				1193D8A31879A9F100B11DB6 /* GoogleMaps.bundle */,
 				110CA5F5181AC81000513C8B /* CoreText.framework */,
 				11F93B7B1803306700232A9F /* Twitter.framework */,
 				11F93B791803305F00232A9F /* SystemConfiguration.framework */,
@@ -795,6 +823,7 @@
 				1195FABB1867D50E00E0818F /* guggenheimMuseum.jpg in Resources */,
 				1195FAB01867D50E00E0818F /* broadway.JPG in Resources */,
 				113F961918616F7200628EA7 /* Icon-40.png in Resources */,
+				1193D8A41879A9F100B11DB6 /* GoogleMaps.bundle in Resources */,
 				113F961A18616F7200628EA7 /* Icon-50.png in Resources */,
 				113F961318616F7200628EA7 /* Icon-1024.png in Resources */,
 				113F960E18616F7200628EA7 /* Default-Portrait@2x~ipad.png in Resources */,
@@ -857,6 +886,7 @@
 				15A3DAEE1682F8A6002FB0C5 /* SimpleAudioEngine.mm in Sources */,
 				1102E48018635FB5005B23E2 /* MapScene.cpp in Sources */,
 				1102E47F18635FB5005B23E2 /* Map.cpp in Sources */,
+				1193D8AF1879AD1400B11DB6 /* GoogleMapsLauncher.mm in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
 				1102E48118635FB5005B23E2 /* CompositeSprite.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
@@ -887,6 +917,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = iphoneos;
 				VALID_ARCHS = "armv6 armv7 i386";
@@ -900,7 +931,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/cocos2d-x/projects/new-york-guide/ExternalFrameworks",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -950,7 +984,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/cocos2d-x/projects/new-york-guide/ExternalFrameworks",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1002,7 +1039,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/cocos2d-x/projects/new-york-guide/ExternalFrameworks",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1053,6 +1093,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
@@ -1067,6 +1108,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv6 armv7 i386";
 			};

@@ -42,6 +42,11 @@ protected:
      */
     bool init(Landmark landmark);
     
+    /**
+     @brief     Display directions to this landmark with Google Maps.
+     */
+    void getDirections();
+    
 private:
     
     // The Landmark data being presented by the popup

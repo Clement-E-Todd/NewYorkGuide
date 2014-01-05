@@ -8,6 +8,7 @@
 
 #include "LandmarkPopup.h"
 #include "Defines.h"
+#include "GoogleMapsLauncher.h"
 
 using namespace cocos2d;
 
@@ -60,15 +61,33 @@ bool LandmarkPopup::init(Landmark landmark)
     
     m_Landmark = landmark;
     
+    // Add title to top of page.
     addContent(CCLabelTTF::create(landmark.name, "Montserrat", 150 * SCREEN_SCALE));
     
+    // Add the image illustrating the landmark.
     CCSprite* image = CCSprite::create(landmark.imageFileName);
     image->setScale(SCREEN_SCALE);
     addContent(image);
     
+    // Add the description.
     addContent(CCLabelTTF::create(landmark.description, "Montserrat", 75 * SCREEN_SCALE));
     
+    // If an address was provided, add a button to get directions to this landmark.
+    if (landmark.address != NULL && landmark.address[0] != '\0')
+    {
+        addButton("Get Directions", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::getDirections)), ccORANGE);
+    }
+    
+    // Finally, add a button to close the popup.
     addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::removeFromParent)), ccRED);
     
     return true;
+}
+
+/**
+ @brief     Display directions to this landmark with Google Maps.
+ */
+void LandmarkPopup::getDirections()
+{
+    GoogleMapsLauncher::showDirections(m_Landmark.address);
 }
