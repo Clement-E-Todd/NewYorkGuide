@@ -139,6 +139,9 @@ void Map::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
         // Scale the map based on the value we just calculated.
         setScale(m_MapNodeStartScale * scaleFactor);
         
+        // Set hard limits on the scale.
+        setScale(clampf(getScale(), MIN_SCALE/2, MAX_SCALE*2));
+        
         // Also scale all of the landmarks.
         maintainScaleOfLandmarks();
         
