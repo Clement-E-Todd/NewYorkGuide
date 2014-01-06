@@ -73,6 +73,11 @@ protected:
     void organizeContent();
     
     /**
+     @brief     Called whenever any button in this popup is held down.
+     */
+    void onAnyButtonDown();
+    
+    /**
      @brief     Fade in the Popup and all of its decendants.
      */
     void fadeInAllDecendants(float duration, float rate, CCNode* target);

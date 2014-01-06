@@ -63,6 +63,11 @@ protected:
      */
     virtual void onTouchEnded();
     
+    /**
+     @brief     Called whenever any button in this popup is held down.
+     */
+    void onAnyButtonDown();
+    
 private:
     
     // The landmark data to be displayed.
