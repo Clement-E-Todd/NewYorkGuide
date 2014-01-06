@@ -179,23 +179,23 @@ void NewYorkMap::compositeSpriteFinishedLoading(CompositeSprite* sprite)
     
     addLandmark(Landmark("Times Square",
                          "timesSquare",
-                         "Times Square is a major commercial\nintersection in Midtown Manhattan\nat the junction of Broadway and\nSeventh Avenue, stretching from\nWest 42nd to West 47th Streets.",
+                         "Times Square is a major commercial\nintersection in Midtown Manhattan\nat the junction of Broadway and\nSeventh Avenue, stretching from\nWest 42nd to West 47th Street.",
                          "Times+Square+NYC",
                          "http://www.timessquarenyc.org/"),
                 ccp(0.46f, 0.7f));
     
     addLandmark(Landmark("Rockefeller\nCenter",
                          "rockefellerCenter",
-                         "Rockefeller Center is a complex of 19\ncommercial buildings covering\n22 acres between 48th and 51st\nstreets in New York City",
+                         "Rockefeller Center is a complex of 19\ncommercial buildings covering\n22 acres between 48th and 51st\nStreet in New York City",
                          "Rockefeller+Center+NYC",
                          "http://www.rockefellercenter.com/"),
                 ccp(0.53f, 0.71f));
     
     addLandmark(Landmark("Carnegie Hall",
                          "carnegieHall",
-                         "A concert venue in Midtown Manhattan,\nit is one of the most prestigious\nvenues in the world for both\nclassical music and\npopular music.",
+                         "A concert venue in Midtown\nManhattan, it is one of the\nmost prestigious venues in the\nworld for both classical music\nand popular music.",
                          "Carnegie+Hall+NYC",
-                         "http://www.carnegiehall.org/‎",
+                         "http://www.carnegiehall.org/",
                          "http://www.carnegiehall.org/Calendar/"),
                 ccp(0.53f, 0.77f));
     
@@ -210,7 +210,7 @@ void NewYorkMap::compositeSpriteFinishedLoading(CompositeSprite* sprite)
                          "metropolitanOperaHouse",
                          "Home to the Met, which is the\nlargest classical music\norganization in North America.",
                          "Metropolitan+Opera+NYC",
-                         "www.metoperafamily.org/‎",
+                         "https://www.metoperafamily.org/",
                          "https://www.metoperafamily.org/metopera/season/index.aspx"),
                 ccp(0.5f, 0.92f));
     
@@ -225,7 +225,7 @@ void NewYorkMap::compositeSpriteFinishedLoading(CompositeSprite* sprite)
                          "centralPark",
                          "Central Park is an urban park in the\neastern portion of the central-\nupper West Side of Manhattan in\nNew York City.",
                          "Central+Park+NYC",
-                         "http://www.centralpark.com/‎"),
+                         "http://www.centralpark.com/"),
                 ccp(0.7f, 0.975f));
     
     addLandmark(Landmark("Metropolitan\nMuseum of Art",
