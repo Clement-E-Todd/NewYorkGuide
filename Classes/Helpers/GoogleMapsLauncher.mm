@@ -12,10 +12,8 @@
 #include "cocos2d.h"
 using namespace cocos2d;
 
-/**
- @brief     Launch map with URL. This method will first try to launch the map using the Google Maps app and if that fails, it will attempt to launch Google Maps in a browser.
- @param     The URL to display.
- */
+// Launch map with URL. This method will first try to launch the map using the Google Maps app and if that fails, it will attempt to launch Google Maps in a browser.
+
 void GoogleMapsLauncher::launchWithURL(const char* mapURL)
 {
     // Attempt to launch the map using the Google Maps iOS app.
@@ -51,10 +49,8 @@ void GoogleMapsLauncher::launchWithURL(const char* mapURL)
     }
 }
 
-/**
- @brief     Shows directions to a specified destination.
- @param     The destination.
- */
+// Shows directions to a specified destination.
+
 void GoogleMapsLauncher::showDirections(const char* destination)
 {
     char destinationURL[256];

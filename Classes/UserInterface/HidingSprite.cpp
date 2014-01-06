@@ -11,6 +11,8 @@
 
 using namespace cocos2d;
 
+// Create a hiding sprite;
+
 HidingSprite* HidingSprite::createWithTexture(CCTexture2D *pTexture)
 {
     HidingSprite *pobSprite = new HidingSprite();
@@ -96,9 +98,8 @@ HidingSprite* HidingSprite::create()
     return NULL;
 }
 
-/**
- * Visits this node's children and draw them recursively. If this sprite is off-screen, this method will be skipped.
- */
+// Visits this node's children and draw them recursively. If this sprite is off-screen, this method will be skipped.
+
 void HidingSprite::visit(void)
 {
     CCPoint min = convertToWorldSpace(CCPointZero);

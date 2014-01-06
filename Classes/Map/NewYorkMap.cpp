@@ -11,10 +11,8 @@
 
 using namespace cocos2d;
 
-/**
- @brief     Create a NewYorkMap instance.
- @return    A pointer to the newly created NewYorkMap.
- */
+// Create a NewYorkMap instance.
+
 NewYorkMap* NewYorkMap::create()
 {
     NewYorkMap *map = new NewYorkMap();
@@ -27,10 +25,8 @@ NewYorkMap* NewYorkMap::create()
     return NULL;
 }
 
-/**
- @brief     Initialize this NewYorkMap instance.
- @return    Whether or not initialization succeeded.
- */
+// Initialize this NewYorkMap instance.
+
 bool NewYorkMap::init()
 {
     runAction(CCSequence::create(CCDelayTime::create(1.0f / 60),
@@ -40,9 +36,8 @@ bool NewYorkMap::init()
     return true;
 }
 
-/**
- @brief     Begin loading the map. Called after a delay to allow the loading popup to be added to the main scene.
- */
+// Begin loading the map. Called after a delay to allow the loading popup to be added to the main scene.
+
 void NewYorkMap::loadMap()
 {
     // Create a loading popup to track the loading progress.
@@ -68,9 +63,8 @@ void NewYorkMap::loadMap()
     }
 }
 
-/**
- @brief     Reaction to the end of a CompositeSprite's loading cycle.
- */
+// Reaction to the end of a CompositeSprite's loading cycle.
+
 void NewYorkMap::compositeSpriteFinishedLoading(CompositeSprite* sprite)
 {
     if (!Map::init(sprite))

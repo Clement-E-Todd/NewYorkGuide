@@ -82,16 +82,16 @@ protected:
      */
     void fadeOutAllDecendants(float duration, float rate, CCNode* target);
     
-    // A list of all of the popup's normal contents (titles, text, images etc).
+    /** A list of all of the popup's normal contents (titles, text, images etc). */
     std::vector<cocos2d::CCNode*> m_Contents;
     
-    // A list of all of the popup's butons.
+    /** A list of all of the popup's butons. */
     std::vector<Button*> m_Buttons;
     
-    // The node used for the semi-transparent backdrop
+    /** The node used for the semi-transparent backdrop. */
     cocos2d::CCSprite* m_Backdrop;
     
-    // A static handle to the current Popup (NULL if none)
+    /** A static handle to the current Popup (NULL if none). */
     static Popup* m_CurrentPopup;
     
 };

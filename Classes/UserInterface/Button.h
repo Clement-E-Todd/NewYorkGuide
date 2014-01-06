@@ -124,18 +124,20 @@ protected:
     
 private:
     
-    // The textures to display in the button's normal and pressed states, respectively.
+    /** The texture to display in the button's normal state. */
     cocos2d::CCTexture2D* m_NormalTexture;
+    
+    /** The texture to display in the button's normal state. */
     cocos2d::CCTexture2D* m_PressedTexture;
     
-    // The callbacks which should be executed when the button is pressed and released, respectively.
+    /** The callbacks which should be executed when the button is pressed and released, respectively. */
     cocos2d::CCCallFunc* m_CallbackOnPress;
     cocos2d::CCCallFunc* m_CallbackOnRelease;
     
-    // Whether or not the Button will stay selected if the user's touch moves.
+    /** Whether or not the Button will stay selected if the user's touch moves. */
     bool m_TouchMoveAllowed;
     
-    // Whether or not the user's current touch has moved since it began.
+    /** Whether or not the user's current touch has moved since it began. */
     bool m_TouchMoved;
     
 };

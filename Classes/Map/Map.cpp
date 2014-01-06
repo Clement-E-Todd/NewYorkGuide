@@ -14,11 +14,8 @@ using namespace cocos2d;
 #define MIN_SCALE   (MAX(WIN_SIZE.width / getContentSize().width, WIN_SIZE.height / getContentSize().height)*2)
 #define MAX_SCALE   (SCREEN_SCALE * 2.5f)
 
-/**
- @brief     Create a Map instance with a target map node.
- @param     mapNode     The node which visually represents the map.
- @return    A pointer to the newly created Map.
- */
+// Create a Map instance with a target map node.
+
 Map* Map::create(CCNode* mapNode)
 {
     Map *map = new Map();
@@ -31,11 +28,8 @@ Map* Map::create(CCNode* mapNode)
     return NULL;
 }
 
-/**
- @brief     Initialize the map with its target map node.
- @param     mapNode     The node which visually represents the map.
- @return    Whether or not the initialization was successful.
- */
+// Initialize the map with its target map node.
+
 bool Map::init(CCNode *mapNode)
 {
     // Listen for touch events.
@@ -55,9 +49,8 @@ bool Map::init(CCNode *mapNode)
     return m_MapNode != NULL;
 }
 
-/**
- @brief     Called when this is removed from the node tree.
- */
+// Called when this is removed from the node tree.
+
 void Map::onExit()
 {
     // Unregister from the touch dispatcher.
@@ -67,12 +60,8 @@ void Map::onExit()
     CCNode::onExit();
 }
 
-/**
- @brief     Respond to the beginning of a user's touch.
- @param     pTouch      A pointer to the touch information.
- @param     pEvent      The event data.
- @return    Whether or not the map accepted the touch input.
- */
+// Respond to the beginning of a user's touch.
+
 bool Map::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
     // If we aren't already tracking 2 touches, track this one. Otherwise ignore this touch.
@@ -113,11 +102,8 @@ bool Map::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     return true;
 }
 
-/**
- @brief     Respond to the user's continued touch input.
- @param     pTouch      A pointer to the touch information.
- @param     pEvent      The event data.
- */
+// Respond to the user's continued touch input.
+ 
 void Map::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
     // If we are only tracking one touch then pan the map based on the touch position.
@@ -152,11 +138,8 @@ void Map::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
     }
 }
 
-/**
- @brief     Respond to the end of a user's touch.
- @param     pTouch      A pointer to the touch information.
- @param     pEvent      The event data.
- */
+// Respond to the end of a user's touch.
+
 void Map::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     // Clear this touch from our tracked touches.
@@ -190,21 +173,17 @@ void Map::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
     }
 }
 
-/**
- @brief     Respond to a user's touch input being lost.
- @param     pTouch      A pointer to the touch information.
- @param     pEvent      The event data.
- */
+// Respond to a user's touch input being lost.
+
 void Map::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     // End the lost touch the same way we would normally end a touch.
     ccTouchEnded(pTouch, pEvent);
 }
 
-/**
- @brief     Record any necessary information in anticipation of panning.
- @return    Whether or not the conditions for panning were met; this method will only succeed if we are tracking exactly one touch.
- */
+
+// Record any necessary information in anticipation of panning.
+
 bool Map::setUpForPanning()
 {
     // We must be tracking one and only one touch for this method to succeed, so return immediately otherwise.
@@ -221,10 +200,8 @@ bool Map::setUpForPanning()
     return true;
 }
 
-/**
- @brief     Record any necessary information in anticipation of zooming.
- @return    Whether or not the conditions for zooming were met; this method will only succeed if we are tracking two touches.
- */
+// Record any necessary information in anticipation of zooming.
+ 
 bool Map::setUpForZooming()
 {
     // We must be tracking two touches for this method to succeed, so return immediately otherwise.
@@ -253,11 +230,8 @@ bool Map::setUpForZooming()
     return true;
 }
 
-/**
- @brief     Translate a point on-screen (for example, a touch location) into an anchor point for the map node.
- @param     location    The on-screen position to be translated.
- @return    The resulting anchor point.
- */
+// Translate a point on-screen (for example, a touch location) into an anchor point for the map node.
+
 CCPoint Map::getAnchorPointFromLocation(CCPoint location)
 {
     CCPoint anchorPoint = convertToNodeSpace(location);
@@ -265,9 +239,8 @@ CCPoint Map::getAnchorPointFromLocation(CCPoint location)
     return anchorPoint;
 }
 
-/**
- @brief     If the map is outside of its boundaries, snap it back smoothly.
- */
+// If the map is outside of its boundaries, snap it back smoothly.
+ 
 void Map::snapMapToTransformLimitations()
 {
     // The length of time the snap should take.
@@ -307,12 +280,8 @@ void Map::snapMapToTransformLimitations()
     runAction(CCEaseOut::create(CCMoveBy::create(snapTime, distanceToMove), 3));
 }
 
-/**
- @brief     Add a new landmark to the map.
- @param     landmark    The landmark data to be displayed.
- @param     coords      The landmark's position on the map (ranging from bottom-left (0,0) to top-right (1,1)).
- @return    Whether or not the landmark was added successfully.
- */
+// Add a new landmark to the map.
+
 bool Map::addLandmark(Landmark landmark, CCPoint coords)
 {
     LandmarkButton* button = LandmarkButton::create(landmark);
@@ -331,11 +300,8 @@ bool Map::addLandmark(Landmark landmark, CCPoint coords)
     }
 }
 
-/**
- @brief     Set all of the landmarks on the map to their original scale.
- @param     duration    How long in seconds it should take for the landmarks to scale.
- @param     futureScale The scale that the Map is expected to be at at the end of the duration (use 0,0 for current).
- */
+// Set all of the landmarks on the map to their original scale.
+
 void Map::maintainScaleOfLandmarks(float duration, cocos2d::CCPoint futureScale)
 {
     for (int landmarkIt = 0; landmarkIt < m_LandmarkButtons.size(); landmarkIt++)

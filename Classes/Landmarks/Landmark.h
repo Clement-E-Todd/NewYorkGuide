@@ -14,22 +14,22 @@
  */
 struct Landmark
 {
-    // The landmark's title.
+    /** The landmark's title. */
     const char* name;
     
-    // The file name of the image representing this landmark.
+    /** The file name of the image representing this landmark. */
     const char* imageFileName;
     
-    // A brief description of the landmark.
+    /** A brief description of the landmark. */
     const char* description;
     
-    // An address to be used by the Google Maps SDK in order to show directions to this landmark.
+    /** An address to be used by the Google Maps SDK in order to show directions to this landmark. */
     const char* address;
     
-    // The URL of the landmark's website (optional, set to "" for none).
+    /** The URL of the landmark's website (optional, set to "" for none). */
     const char* websiteURL;
     
-    // The URL for buying tickets to the landmark if applicable (also optional).
+    /** The URL for buying tickets to the landmark if applicable (also optional). */
     const char* ticketsURL;
     
     /**

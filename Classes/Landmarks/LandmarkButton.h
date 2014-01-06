@@ -70,7 +70,7 @@ protected:
     
 private:
     
-    // The landmark data to be displayed.
+    /** The landmark data to be displayed. */
     Landmark m_Landmark;
 };
 

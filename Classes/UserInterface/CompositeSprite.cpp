@@ -11,14 +11,8 @@
 using namespace std;
 using namespace cocos2d;
 
-/**
- @brief     Create an CompositeSprite instance with a grid of sprites.
- @param     fileName        The part of the file's name which comes before its alignment.
- @param     fileExtension   The file extension shared by all sprites in the grid.
- @param     gridWidth       The number of images to be found width-wise in the grid.
- @param     gridHeight      The number of images to be found height-wise in the grid.
- @return    A pointer to the newly created CompositeSprite.
- */
+// Create an CompositeSprite instance with a grid of sprites.
+
 CompositeSprite* CompositeSprite::create(const char *fileName, const char* fileExtension, unsigned int gridWidth, unsigned int gridHeight, LoadingPopup* loadingPopup)
 {
     CompositeSprite *compositeSprite = new CompositeSprite();
@@ -31,15 +25,8 @@ CompositeSprite* CompositeSprite::create(const char *fileName, const char* fileE
     return NULL;
 }
 
-/**
- @brief     Initialize the CompositeSprite by populating it with its sprite children.
- @param     fileName        The part of the file's name which comes before its alignment.
- @param     fileExtension   The file extension shared by all sprites in the grid.
- @param     gridWidth       The number of images to be found width-wise in the grid.
- @param     gridHeight      The number of images to be found height-wise in the grid.
- @return    true    The CompositeSprite was initialized successfully.
- @return    false   The CompositeSprite failed to initialize.
- */
+// Initialize the CompositeSprite by populating it with its sprite children.
+
 bool CompositeSprite::init(const char *fileName, const char* fileExtension, unsigned int gridWidth, unsigned int gridHeight, LoadingPopup* loadingPopup)
 {
     // Find a group of image files beginning in [fileName] and ending in [fileExtension] with grid position indicated between (ie. "imageName3x2.png") and load each of them in as HidingSprites, adding them as children in a grid.
@@ -66,10 +53,8 @@ bool CompositeSprite::init(const char *fileName, const char* fileExtension, unsi
     return true;
 }
 
-/**
- @brief     Subscribe an observer to loading notifications for this sprite.
- @param     observer    A pointer to the observer to be added.
- */
+// Subscribe an observer to loading notifications for this sprite.
+
 void CompositeSprite::addObserver(CompositeSpriteObserver* observer)
 {
     if (observer)
@@ -78,9 +63,8 @@ void CompositeSprite::addObserver(CompositeSpriteObserver* observer)
     }
 }
 
-/**
- @brief     Load and add the next child sprite.
- */
+// Load and add the next child sprite.
+ 
 void CompositeSprite::loadNextPiece()
 {
     // Add a new colomn if needed

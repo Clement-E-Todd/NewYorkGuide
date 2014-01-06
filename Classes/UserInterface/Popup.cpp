@@ -13,10 +13,8 @@ using namespace cocos2d;
 
 Popup* Popup::m_CurrentPopup = NULL;
 
-/**
- @brief     Create and add a popup to the current scene.
- @return    A pointer to the popup.
- */
+// Create and add a popup to the current scene.
+
 Popup* Popup::showPopup()
 {
     Popup* popup = create();
@@ -32,10 +30,7 @@ Popup* Popup::showPopup()
     }
 }
 
-/**
- @brief     Create a new Popup instance.
- @return    A pointer to the newly created Popup.
- */
+// Create a new Popup instance.
 Popup* Popup::create()
 {
     Popup *popup = new Popup();
@@ -48,10 +43,8 @@ Popup* Popup::create()
     return NULL;
 }
 
-/**
- @brief     Initialize this Popup instance.
- @return    Whether or not initialization was successful.
- */
+// Initialize this Popup instance.
+
 bool Popup::init()
 {
     if (!CCNode::init())
@@ -84,9 +77,8 @@ bool Popup::init()
     return true;
 }
 
-/**
- @brief     Called when this is removed from the node tree.
- */
+// Called when this is removed from the node tree.
+
 void Popup::onExit()
 {
     // Unregister this Button from the touch dispatcher.
@@ -102,9 +94,8 @@ void Popup::onExit()
     CCNode::onExit();
 }
 
-/**
- @brief     Add a node to the popup. The node will be positioned automatically.
- */
+// Add a node to the popup. The node will be positioned automatically.
+
 void Popup::addContent(cocos2d::CCNode* content)
 {
     addChild(content);
@@ -112,9 +103,8 @@ void Popup::addContent(cocos2d::CCNode* content)
     organizeContent();
 }
 
-/**
- @brief     Add a button to the popup with specified text, callback and colour. The button will be positioned automatically.
- */
+// Add a button to the popup with specified text, callback and colour. The button will be positioned automatically.
+
 void Popup::addButton(const char* text, cocos2d::CCCallFunc* callback, cocos2d::ccColor3B colour)
 {
     Button* button = Button::create("buttonNormal.png", "buttonPressed.png", NULL, callback);
@@ -130,9 +120,8 @@ void Popup::addButton(const char* text, cocos2d::CCCallFunc* callback, cocos2d::
     organizeContent();
 }
 
-/**
- @brief     Position all elements added to the popup in an evenly-spaced manner.
- */
+// Position all elements added to the popup in an evenly-spaced manner.
+
 void Popup::organizeContent()
 {
     // Figure out the total height of all of the elements so that we can use it to find out how much spacing is needed between elements.
@@ -206,9 +195,8 @@ void Popup::organizeContent()
     }
 }
 
-/**
- @brief     Execute closing animations and remove the popup from the node tree.
- */
+// Execute closing animations and remove the popup from the node tree.
+
 void Popup::closePopup()
 {
     const float duration = 0.3f;
@@ -236,9 +224,8 @@ void Popup::closePopup()
                                  NULL));
 }
 
-/**
- @brief     Fade in the Popup and all of its decendants.
- */
+// Fade in the Popup and all of its decendants.
+
 void Popup::fadeInAllDecendants(float duration, float rate, CCNode* target)
 {
     target->runAction(CCEaseOut::create(CCFadeIn::create(duration), rate));
@@ -250,9 +237,8 @@ void Popup::fadeInAllDecendants(float duration, float rate, CCNode* target)
     }
 }
 
-/**
- @brief     Fade out the Popup and all of its decendants.
- */
+// Fade out the Popup and all of its decendants.
+
 void Popup::fadeOutAllDecendants(float duration, float rate, CCNode* target)
 {
     target->runAction(CCEaseOut::create(CCFadeOut::create(duration), rate));

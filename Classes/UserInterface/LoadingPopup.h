@@ -78,10 +78,10 @@ protected:
     
 private:
     
-    // The sprite which surrounds the progress bar.
+    /** The sprite which surrounds the progress bar. */
     cocos2d::CCSprite* m_Border;
     
-    // The sprite which forms the progress bar.
+    /** The sprite which forms the progress bar. */
     ProgressBar* m_ProgressBar;
     
 };

@@ -112,18 +112,18 @@ protected:
     
 private:
     
-    // The node which visually represents the map.
+    /** The node which visually represents the map. */
     cocos2d::CCNode* m_MapNode;
     
-    // Pointers to the touch input data (we only care about 2 touches at once, so that's all we store).
+    /** Pointers to the touch input data (we only care about 2 touches at once, so that's all we store). */
     cocos2d::CCTouch* m_Touches[2];
     
-    // Positional data used to calculate panning and zooming.
+    /** Positional data used to calculate panning and zooming. */
     cocos2d::CCPoint m_MapNodeStartPosition;
     float m_MapNodeStartScale;
     cocos2d::CCPoint m_TouchStartPositions[2];
     
-    // A collection of landmarks being displayed on the map as buttons which can be pressed to get more information.
+    /** A collection of landmarks being displayed on the map as buttons which can be pressed to get more information. */
     std::vector<LandmarkButton*> m_LandmarkButtons;
 };
 

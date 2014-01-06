@@ -10,10 +10,8 @@
 
 using namespace cocos2d;
 
-/**
- @brief     Create and add a popup to the current scene.
- @return    A pointer to the popup.
- */
+// Create and add a popup to the current scene.
+
 LoadingPopup* LoadingPopup::showPopup(cocos2d::CCSprite* borderSprite, ProgressBar* progressBar)
 {
     LoadingPopup* popup = create(borderSprite, progressBar);
@@ -29,10 +27,8 @@ LoadingPopup* LoadingPopup::showPopup(cocos2d::CCSprite* borderSprite, ProgressB
     }
 }
 
-/**
- @brief     Create a new Popup instance.
- @return    A pointer to the newly created Popup.
- */
+// Create a new Popup instance.
+
 LoadingPopup* LoadingPopup::create(CCSprite* borderSprite, ProgressBar* progressBar)
 {
     LoadingPopup *popup = new LoadingPopup();
@@ -45,10 +41,8 @@ LoadingPopup* LoadingPopup::create(CCSprite* borderSprite, ProgressBar* progress
     return NULL;
 }
 
-/**
- @brief     Initialize this Popup instance.
- @return    Whether or not initialization was successful.
- */
+// Initialize this Popup instance.
+
 bool LoadingPopup::init(CCSprite* borderSprite, ProgressBar* progressBar)
 {
     if (!Popup::init())
@@ -65,9 +59,8 @@ bool LoadingPopup::init(CCSprite* borderSprite, ProgressBar* progressBar)
     return true;
 }
 
-/**
- @brief     Called when the node is removed fromt he node tree.
- */
+// Called when the node is removed fromt he node tree.
+
 void LoadingPopup::onExit()
 {
     CCTextureCache* cache = CCTextureCache::sharedTextureCache();
@@ -77,17 +70,15 @@ void LoadingPopup::onExit()
     Popup::onExit();
 }
 
-/**
- @brief     Set the progress to be shown by the progress bar.
- */
+// Set the progress to be shown by the progress bar.
+
 void LoadingPopup::setProgress(float progress)
 {
     m_ProgressBar->setProgress(progress);
 }
 
-/**
- @brief     Create a progress bar using a specified image file.
- */
+// Create a progress bar using a specified image file.
+
 ProgressBar* ProgressBar::create(const char *fileName)
 {
     ProgressBar *progressBar = new ProgressBar();
@@ -101,9 +92,8 @@ ProgressBar* ProgressBar::create(const char *fileName)
     return NULL;
 }
 
-/**
- @brief     Visits this node's children and draw them recursively. Progress bar clips a chunk based on the progress value.
- */
+// Visits this node's children and draw them recursively. Progress bar clips a chunk based on the progress value.
+
 void ProgressBar::visit(void)
 {
     kmGLPushMatrix();
@@ -118,9 +108,8 @@ void ProgressBar::visit(void)
     kmGLPopMatrix();
 }
 
-/**
- @brief     Set the progress to be shown by this sprite.
- */
+// Set the progress to be shown by this sprite.
+
 void ProgressBar::setProgress(float progress)
 {
     m_Progress = progress;

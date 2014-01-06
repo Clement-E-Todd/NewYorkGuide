@@ -12,10 +12,8 @@
 
 using namespace cocos2d;
 
-/**
- @brief     Create a CCScene containing a MapScene layer.
- @return    A pointer to the newly created scene.
- */
+// Create a CCScene containing a MapScene layer.
+
 CCScene* MapScene::scene()
 {
     CCScene *scene = CCScene::create();
@@ -24,11 +22,8 @@ CCScene* MapScene::scene()
     return scene;
 }
 
-/**
- @brief     Initialize the layer by populating it with its contents.
- @return    true    The layer was initialized successfully.
- @return    false   The layer failed to initialize.
- */
+// Initialize the layer by populating it with its contents.
+
 bool MapScene::init()
 {
     if ( !CCLayer::init() )

@@ -89,10 +89,10 @@ protected:
     
 private:
     
-    // Information regarding the sprite's loading progress.
+    /** Information regarding the sprite's loading progress. */
     CompositeSpriteLoadData m_LoadingData;
     
-    // A collection of the observers that are subscribed to notifications from this sprite.
+    /** A collection of the observers that are subscribed to notifications from this sprite. */
     std::vector<CompositeSpriteObserver*> m_Observers;
 };
 

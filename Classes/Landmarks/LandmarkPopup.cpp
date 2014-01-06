@@ -16,11 +16,8 @@
 
 using namespace cocos2d;
 
-/**
- @brief     Create an popup that displays the information from a specified landmark and add it to the current scene.
- @param     landmark    The landmark whose info should be displayed.
- @return    A pointer to the popup that is created.
- */
+// Create an popup that displays the information from a specified landmark and add it to the current scene.
+
 LandmarkPopup* LandmarkPopup::showPopup(Landmark landmark, cocos2d::CCPoint buttonPosition)
 {
     LandmarkPopup* popup = create(landmark, buttonPosition);
@@ -36,10 +33,8 @@ LandmarkPopup* LandmarkPopup::showPopup(Landmark landmark, cocos2d::CCPoint butt
     }
 }
 
-/**
- @brief     Create a new Popup instance.
- @return    A pointer to the newly created Popup.
- */
+// Create a new Popup instance.
+ 
 LandmarkPopup* LandmarkPopup::create(Landmark landmark, cocos2d::CCPoint buttonPosition)
 {
     LandmarkPopup *popup = new LandmarkPopup();
@@ -52,10 +47,8 @@ LandmarkPopup* LandmarkPopup::create(Landmark landmark, cocos2d::CCPoint buttonP
     return NULL;
 }
 
-/**
- @brief     Initialize this Popup instance.
- @return    Whether or not initialization was successful.
- */
+// Initialize this Popup instance.
+
 bool LandmarkPopup::init(Landmark landmark, cocos2d::CCPoint buttonPosition)
 {
     if (!Popup::init())
@@ -123,9 +116,8 @@ bool LandmarkPopup::init(Landmark landmark, cocos2d::CCPoint buttonPosition)
     return true;
 }
 
-/**
- @brief Called when the popup is removed from the node tree.
- */
+// Called when the popup is removed from the node tree.
+
 void LandmarkPopup::onExit()
 {
     // Remove the texture from the texture cache to free up memory.
@@ -135,17 +127,15 @@ void LandmarkPopup::onExit()
     Popup::onExit();
 }
 
-/**
- @brief     Display directions to this landmark with Google Maps.
- */
+// Display directions to this landmark with Google Maps.
+ 
 void LandmarkPopup::getDirections()
 {
     GoogleMapsLauncher::showDirections(m_Landmark.address);
 }
 
-/**
- @brief     Launch the landmark's official website.
- */
+// Launch the landmark's official website.
+
 void LandmarkPopup::launchWebsite()
 {
     if (m_Landmark.websiteURL != NULL && m_Landmark.websiteURL[0] != '\0')
@@ -154,9 +144,8 @@ void LandmarkPopup::launchWebsite()
     }
 }
 
-/**
- @brief     Launch the website where tickets for the landmark can be purchased.
- */
+// Launch the website where tickets for the landmark can be purchased.
+ 
 void LandmarkPopup::launchTicketWebsite()
 {
     if (m_Landmark.ticketsURL != NULL && m_Landmark.ticketsURL[0] != '\0')

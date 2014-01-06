@@ -67,10 +67,10 @@ protected:
     
 private:
     
-    // The Landmark data being presented by the popup
+    /** The Landmark data being presented by the popup. */
     Landmark m_Landmark;
     
-    // The texture used for the image.
+    /** The texture used for the image. */
     cocos2d::CCTexture2D* m_Texture;
 };
 

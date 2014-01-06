@@ -15,11 +15,8 @@ using namespace cocos2d;
 // A tag used to identify the CCAction that LandmarkButton::maintainOriginalScale(...) uses.
 #define TAG_SCALE_ACTION    12345
 
-/**
- @brief     Create a LandmarkButton instance.
- @param     landmark    The landmark data to display.
- @return    A pointer to the newly created button.
- */
+// Create a LandmarkButton instance.
+
 LandmarkButton* LandmarkButton::create(Landmark landmark)
 {
     LandmarkButton *button = new LandmarkButton();
@@ -32,11 +29,8 @@ LandmarkButton* LandmarkButton::create(Landmark landmark)
     return NULL;
 }
 
-/**
- @brief     Initialize a LandmarkButton instance.
- @param     landmark    The landmark data to display.
- @return    A pointer to the newly created button.
- */
+// Initialize a LandmarkButton instance.
+
 bool LandmarkButton::init(Landmark landmark)
 {
     // Perform the base class initialization, or quit now if it fails.
@@ -72,11 +66,8 @@ bool LandmarkButton::init(Landmark landmark)
     }
 }
 
-/**
- @brief     Counteract the parent's scaling.
- @param     duration            How long it should take to go to the original scale.
- @param     futureParentScale   The scale that the parent is expected to be at at the end of the duration (use 0,0 for current).
- */
+// Counteract the parent's scaling.
+
 void LandmarkButton::maintainOriginalScale(float duration, cocos2d::CCPoint futureParentScale)
 {
     // Figure out whether to use the parent's current scale or a predicted future scale.
@@ -118,9 +109,8 @@ void LandmarkButton::maintainOriginalScale(float duration, cocos2d::CCPoint futu
     }
 }
 
-/**
- @brief     An extendable method which is called when a new touch on the button begins.
- */
+// An extendable method which is called when a new touch on the button begins.
+
 void LandmarkButton::onTouchBegan()
 {
     // Pass control on to the base class.
@@ -133,9 +123,8 @@ void LandmarkButton::onTouchBegan()
     setZOrder(1);
 }
 
-/**
- @brief     An extendable method which is called when an existing touch moves off of the button.
- */
+// An extendable method which is called when an existing touch moves off of the button.
+ 
 void LandmarkButton::onTouchMovedOff()
 {
     // Pass control on to the base class.
@@ -148,9 +137,8 @@ void LandmarkButton::onTouchMovedOff()
     setZOrder(0);
 }
 
-/**
- @brief     An extendable method which is called when an existing touch moves back onto the button.
- */
+// An extendable method which is called when an existing touch moves back onto the button.
+
 void LandmarkButton::onTouchMovedOn()
 {
     // Pass control on to the base class.
@@ -163,9 +151,8 @@ void LandmarkButton::onTouchMovedOn()
     setZOrder(1);
 }
 
-/**
- @brief     An extendable method which is called when a touch ends on the button.
- */
+// An extendable method which is called when a touch ends on the button.
+
 void LandmarkButton::onTouchEnded()
 {
     // Pass control on to the base class.

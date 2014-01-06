@@ -8,10 +8,8 @@
 
 #include "WebLauncher.h"
 
-/**
- @brief     Launch a web browser and open a website based on a specified URL.
- @param     webURL      The address of the website which should be opened.
- */
+// Launch a web browser and open a website based on a specified URL.
+
 void WebLauncher::launchBrowserWithURL(const char* url)
 {
     NSURL *nsURL = [NSURL URLWithString:[NSString stringWithUTF8String:url]];

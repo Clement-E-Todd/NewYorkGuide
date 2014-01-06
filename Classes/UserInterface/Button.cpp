@@ -10,14 +10,8 @@
 
 using namespace cocos2d;
 
-/**
- @brief     Create an instance of a Button with images and callbacks for both the "press" and "release" states.
- @param     imageFilename           The file name for the image to be used while the button is in its normal state.
- @param     pressedimageFilename    The file name for the image to be used while the button is in its pressed state.
- @param     callbackOnPress         The callback to execute when a touch on the button begins.
- @param     callbackOnRelease       The callback to execute when a touch on the button ends.
- @return    A pointer to the newly created Button.
- */
+// Create an instance of a Button with images and callbacks for both the "press" and "release" states.
+
 Button* Button::create(const char* imageFilename, const char* pressedImageFilename,
                       cocos2d::CCCallFunc* callbackOnPress, cocos2d::CCCallFunc* callbackOnRelease)
 {
@@ -31,26 +25,15 @@ Button* Button::create(const char* imageFilename, const char* pressedImageFilena
     return NULL;
 }
 
-/**
- @brief     Create an instance of a Button with an image and callbacks for both the "press" and "release" states.
- @param     imageFilename           The file name for the image to be used while the button is in its normal state.
- @param     callbackOnPress         The callback to execute when a touch on the button begins.
- @param     callbackOnRelease       The callback to execute when a touch on the button ends.
- @return    A pointer to the newly created Button.
- */
+// Create an instance of a Button with an image and callbacks for both the "press" and "release" states.
+
 Button* Button::create(const char* imageFilename, cocos2d::CCCallFunc* callbackOnPress, cocos2d::CCCallFunc* callbackOnRelease)
 {
     return create(imageFilename, imageFilename, callbackOnPress, callbackOnRelease);
 }
 
-/**
- @brief     Initiaize an instance of a Button with images and callbacks for both the "press" and "release" states.
- @param     imageFilename           The file name for the image to be used while the button is in its normal state.
- @param     pressedimageFilename    The file name for the image to be used while the button is in its pressed state.
- @param     callbackOnPress         The callback to execute when a touch on the button begins.
- @param     callbackOnRelease       The callback to execute when a touch on the button ends.
- @return    Whether or not the Button was initialized successfully.
- */
+// Initiaize an instance of a Button with images and callbacks for both the "press" and "release" states.
+
 bool Button::init(const char* imageFilename, const char* pressedImageFilename,
           cocos2d::CCCallFunc* callbackOnPress, cocos2d::CCCallFunc* callbackOnRelease)
 {
@@ -84,9 +67,8 @@ bool Button::init(const char* imageFilename, const char* pressedImageFilename,
     return true;
 }
 
-/**
- @brief     Called when this is removed from the node tree.
- */
+// Called when this is removed from the node tree.
+
 void Button::onExit()
 {
     // Unregister this Button from the touch dispatcher.
@@ -100,12 +82,8 @@ void Button::onExit()
     CCSprite::onExit();
 }
 
-/**
- @brief     Respond to the beginning of a user's touch.
- @param     pTouch      A pointer to the touch information.
- @param     pEvent      The event data.
- @return    Whether or not the map  accepted the touch input.
- */
+// Respond to the beginning of a user's touch.
+
 bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     // Perform the extendable "touch began" behaviour and note that this touch hasn't moved yet.
@@ -123,11 +101,8 @@ bool Button::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
     }
 }
 
-/**
- @brief     Respond to the user's continued touch input.
- @param     pTouch      A pointer to the touch information.
- @param     pEvent      The event data.
- */
+// Respond to the user's continued touch input.
+
 void Button::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     // Make sure that Touch Move is allowed by this button before continuing.
@@ -155,11 +130,8 @@ void Button::ccTouchMoved(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
     }
 }
 
-/**
- @brief     Respond to the end of a user's touch.
- @param     pTouch      A pointer to the touch information.
- @param     pEvent      The event data.
- */
+// Respond to the end of a user's touch.
+
 void Button::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     // In the event that this Button disallows Touch Moves and a Touch Move was detected, ignore the Touch End logic.
@@ -175,20 +147,16 @@ void Button::ccTouchEnded(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
     }
 }
 
-/**
- @brief     Respond to a user's touch input being lost.
- @param     pTouch      A pointer to the touch information.
- @param     pEvent      The event data.
- */
+// Respond to a user's touch input being lost.
+
 void Button::ccTouchCancelled(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
 {
     // Lost touches should be handled the same as other ended touches.
     ccTouchEnded(pTouch, pEvent);
 }
 
-/**
- @brief     An extendable method which is called when a new touch on the button begins.
- */
+// An extendable method which is called when a new touch on the button begins.
+
 void Button::onTouchBegan()
 {
     // Execute the assigned callback for this event.
@@ -198,27 +166,24 @@ void Button::onTouchBegan()
     setTexture(m_PressedTexture);
 }
 
-/**
- @brief     An extendable method which is called when an existing touch moves off of the button.
- */
+// An extendable method which is called when an existing touch moves off of the button.
+ 
 void Button::onTouchMovedOff()
 {
     // Display the "normal" texture since the button is not being touched.
     setTexture(m_NormalTexture);
 }
 
-/**
- @brief     An extendable method which is called when an existing touch moves back onto the button.
- */
+// An extendable method which is called when an existing touch moves back onto the button.
+
 void Button::onTouchMovedOn()
 {
     // Display the "pressed" texture since the button is being touched.
     setTexture(m_PressedTexture);
 }
 
-/**
- @brief     An extendable method which is called when a touch ends on the button.
- */
+// An extendable method which is called when a touch ends on the button.
+
 void Button::onTouchEnded()
 {
     // Execute the assigned callback for this event.
@@ -228,18 +193,15 @@ void Button::onTouchEnded()
     setTexture(m_NormalTexture);
 }
 
-/**
- @brief     Checks whether or not the button is currently pressed.
- */
+// Checks whether or not the button is currently pressed.
+ 
 bool Button::isPressed()
 {
     return (getTexture() == m_PressedTexture);
 }
 
-/**
- @brief     Checks whether or not an indicated touch lies within the Button's bounds.
- @return    The result of the comparison.
- */
+// Checks whether or not an indicated touch lies within the Button's bounds.
+ 
 bool Button::touchIsInBounds(cocos2d::CCTouch* touch)
 {
     CCPoint touchPositionLocal = convertToNodeSpace(touch->getLocation());
@@ -248,9 +210,8 @@ bool Button::touchIsInBounds(cocos2d::CCTouch* touch)
             touchPositionLocal.y > 0 && touchPositionLocal.y <= getContentSize().height);
 }
 
-/**
- @brief     Set whether or not the Button will stay selected if the user's touch moves.
- */
+// Set whether or not the Button will stay selected if the user's touch moves.
+
 void Button::allowTouchMovement(bool allow)
 {
     m_TouchMoveAllowed = allow;
