@@ -66,7 +66,8 @@ bool Popup::init()
     m_Backdrop = CCSprite::create("blankPixel.png");
     addChild(m_Backdrop);
     m_Backdrop->setAnchorPoint(CCPointZero);
-    m_Backdrop->cocos2d::CCNode::setScale(getContentSize().width, getContentSize().height);
+    m_Backdrop->setScaleX(getContentSize().width);
+    m_Backdrop->setScaleY(getContentSize().height);
     m_Backdrop->setColor(ccBLACK);
     m_Backdrop->setOpacity(225);
     
