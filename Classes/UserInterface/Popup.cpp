@@ -8,7 +8,6 @@
 
 #include "Popup.h"
 #include "Defines.h"
-#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 
@@ -117,8 +116,7 @@ void Popup::addContent(cocos2d::CCNode* content)
  */
 void Popup::addButton(const char* text, cocos2d::CCCallFunc* callback, cocos2d::ccColor3B colour)
 {
-    Button* button = Button::create("buttonNormal.png", "buttonPressed.png",
-                                    CCCallFunc::create(this, callfunc_selector(Popup::onAnyButtonDown)), callback);
+    Button* button = Button::create("buttonNormal.png", "buttonPressed.png", NULL, callback);
     button->setColor(colour);
     button->setScale(SCREEN_SCALE);
     
@@ -235,14 +233,6 @@ void Popup::closePopup()
     runAction(CCSequence::create(CCDelayTime::create(duration),
                                  CCCallFunc::create(this, callfunc_selector(Popup::removeFromParent)),
                                  NULL));
-}
-
-/**
- @brief     Called whenever any button in this popup is held down.
- */
-void Popup::onAnyButtonDown()
-{
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_down.wav");
 }
 
 /**

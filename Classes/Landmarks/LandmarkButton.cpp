@@ -9,7 +9,6 @@
 #include "LandmarkButton.h"
 #include "Defines.h"
 #include "LandmarkPopup.h"
-#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 
@@ -132,9 +131,6 @@ void LandmarkButton::onTouchBegan()
     
     // Set the z order to be in front of other buttons.
     setZOrder(1);
-    
-    // Play corresponding sound
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_down.wav");
 }
 
 /**
@@ -183,7 +179,4 @@ void LandmarkButton::onTouchEnded()
     
     // Display the popup.
     LandmarkPopup::showPopup(m_Landmark, convertToWorldSpaceAR(CCPointZero));
-    
-    // Play corresponding sound
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_up.wav");
 }

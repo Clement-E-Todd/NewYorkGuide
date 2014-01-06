@@ -10,7 +10,6 @@
 #include "Defines.h"
 #include "GoogleMapsLauncher.h"
 #include "WebLauncher.h"
-#include "SimpleAudioEngine.h"
 
 #define COLOUR_BUTTON_NORMAL    ccc3(0, 150, 141)
 #define COLOUR_BUTTON_CLOSE     ccc3(0, 92, 115)
@@ -99,7 +98,7 @@ bool LandmarkPopup::init(Landmark landmark, cocos2d::CCPoint buttonPosition)
     }
     
     // Finally, add a button to close the popup.
-    addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::closePopupWithSound)), COLOUR_BUTTON_CLOSE);
+    addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::closePopup)), COLOUR_BUTTON_CLOSE);
     
     
     // For visual flare, do a nice fade-in and make the illusion of the image moving from the button to the popup.
@@ -142,7 +141,6 @@ void LandmarkPopup::onExit()
 void LandmarkPopup::getDirections()
 {
     GoogleMapsLauncher::showDirections(m_Landmark.address);
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_up.wav");
 }
 
 /**
@@ -154,7 +152,6 @@ void LandmarkPopup::launchWebsite()
     {
         WebLauncher::launchBrowserWithURL(m_Landmark.websiteURL);
     }
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_up.wav");
 }
 
 /**
@@ -166,14 +163,4 @@ void LandmarkPopup::launchTicketWebsite()
     {
         WebLauncher::launchBrowserWithURL(m_Landmark.ticketsURL);
     }
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_up.wav");
-}
-
-/**
- @brief     Play the closing sound and close the popup.
- */
-void LandmarkPopup::closePopupWithSound()
-{
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_cancel.wav");
-    closePopup();
 }

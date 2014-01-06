@@ -125,9 +125,6 @@
 		1193D9221879F9CD00B11DB6 /* loadingBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D91E1879F9CD00B11DB6 /* loadingBorder.png */; };
 		1193D9231879F9CD00B11DB6 /* loadingProgress.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D91F1879F9CD00B11DB6 /* loadingProgress.png */; };
 		1193D9261879FE0300B11DB6 /* LoadingPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1193D9241879FE0300B11DB6 /* LoadingPopup.cpp */; };
-		1193D92D187AA34400B11DB6 /* button_cancel.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1193D92A187AA34400B11DB6 /* button_cancel.wav */; };
-		1193D92E187AA34400B11DB6 /* button_down.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1193D92B187AA34400B11DB6 /* button_down.wav */; };
-		1193D92F187AA34400B11DB6 /* button_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1193D92C187AA34400B11DB6 /* button_up.wav */; };
 		1195FACF1867E70700E0818F /* NewYorkMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1195FACD1867E70700E0818F /* NewYorkMap.cpp */; };
 		11CFF5E317D7794400240EE3 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11CFF5E217D7794400240EE3 /* StoreKit.framework */; };
 		11F93B5C1803219100232A9F /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F93B5B1803219100232A9F /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -318,9 +315,6 @@
 		1193D91F1879F9CD00B11DB6 /* loadingProgress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingProgress.png; sourceTree = "<group>"; };
 		1193D9241879FE0300B11DB6 /* LoadingPopup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingPopup.cpp; sourceTree = "<group>"; };
 		1193D9251879FE0300B11DB6 /* LoadingPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingPopup.h; sourceTree = "<group>"; };
-		1193D92A187AA34400B11DB6 /* button_cancel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_cancel.wav; sourceTree = "<group>"; };
-		1193D92B187AA34400B11DB6 /* button_down.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_down.wav; sourceTree = "<group>"; };
-		1193D92C187AA34400B11DB6 /* button_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = button_up.wav; sourceTree = "<group>"; };
 		1195FACC1867DAFF00E0818F /* Landmark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Landmark.h; sourceTree = "<group>"; };
 		1195FACD1867E70700E0818F /* NewYorkMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NewYorkMap.cpp; sourceTree = "<group>"; };
 		1195FACE1867E70700E0818F /* NewYorkMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewYorkMap.h; sourceTree = "<group>"; };
@@ -536,7 +530,6 @@
 				113F95DB18616F7200628EA7 /* ios */,
 				1195FA931867D50D00E0818F /* landmarks */,
 				113F95F318616F7200628EA7 /* map */,
-				1193D929187AA34400B11DB6 /* sfx */,
 				112BA970186F29D100D3B8BF /* userInterface */,
 			);
 			name = Resources;
@@ -598,16 +591,6 @@
 				113F960718616F7200628EA7 /* newYorkMap3x4.png */,
 			);
 			path = map;
-			sourceTree = "<group>";
-		};
-		1193D929187AA34400B11DB6 /* sfx */ = {
-			isa = PBXGroup;
-			children = (
-				1193D92A187AA34400B11DB6 /* button_cancel.wav */,
-				1193D92B187AA34400B11DB6 /* button_down.wav */,
-				1193D92C187AA34400B11DB6 /* button_up.wav */,
-			);
-			path = sfx;
 			sourceTree = "<group>";
 		};
 		1195FA931867D50D00E0818F /* landmarks */ = {
@@ -893,13 +876,11 @@
 				1193D8F81879D9E600B11DB6 /* eastRiverPark.png in Resources */,
 				113F961B18616F7200628EA7 /* Icon-57.png in Resources */,
 				113F962C18616F7200628EA7 /* newYorkMap2x2.png in Resources */,
-				1193D92F187AA34400B11DB6 /* button_up.wav in Resources */,
 				113F961518616F7200628EA7 /* Icon-120.png in Resources */,
 				1193D8FF1879D9E600B11DB6 /* guggenheimMuseum_mini.png in Resources */,
 				113F960D18616F7200628EA7 /* Default-Landscape~ipad.png in Resources */,
 				1193D8FA1879D9E600B11DB6 /* ellisIsland.png in Resources */,
 				113F961D18616F7200628EA7 /* Icon-72.png in Resources */,
-				1193D92E187AA34400B11DB6 /* button_down.wav in Resources */,
 				1193D8F41879D9E600B11DB6 /* chinaTown.png in Resources */,
 				113F961E18616F7200628EA7 /* Icon-76.png in Resources */,
 				113F963218616F7200628EA7 /* newYorkMap3x3.png in Resources */,
@@ -983,7 +964,6 @@
 				113F962618616F7200628EA7 /* newYorkMap1x1.png in Resources */,
 				113F961718616F7200628EA7 /* Icon-152.png in Resources */,
 				113F962A18616F7200628EA7 /* newYorkMap2x0.png in Resources */,
-				1193D92D187AA34400B11DB6 /* button_cancel.wav in Resources */,
 				1193D9181879D9E600B11DB6 /* worldFinancialCentre.png in Resources */,
 				113F961618616F7200628EA7 /* Icon-144.png in Resources */,
 				1193D8FC1879D9E600B11DB6 /* empireStateBuilding.png in Resources */,
