@@ -98,7 +98,7 @@ bool LandmarkPopup::init(Landmark landmark)
     }
     
     // Finally, add a button to close the popup.
-    addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::removeFromParent)), COLOUR_BUTTON_CLOSE);
+    addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::closePopup)), COLOUR_BUTTON_CLOSE);
     
     return true;
 }

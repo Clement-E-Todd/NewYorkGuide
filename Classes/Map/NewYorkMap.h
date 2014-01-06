@@ -37,6 +37,12 @@ protected:
      @return    Whether or not initialization succeeded.
      */
     bool init();
+    
+    /**
+     @brief     Begin loading the map. Called after a delay to allow the loading popup to be added to the main scene.
+     */
+    void loadMap();
+    
 };
 
 #endif // NEW_YORK_MAP_H

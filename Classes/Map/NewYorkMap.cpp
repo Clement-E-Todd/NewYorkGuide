@@ -9,6 +9,8 @@
 #include "NewYorkMap.h"
 #include "CompositeSprite.h"
 
+using namespace cocos2d;
+
 /**
  @brief     Create a NewYorkMap instance.
  @return    A pointer to the newly created NewYorkMap.
@@ -31,19 +33,33 @@ NewYorkMap* NewYorkMap::create()
  */
 bool NewYorkMap::init()
 {
+    runAction(CCSequence::create(CCDelayTime::create(1.0f / 60),
+                                 CCCallFunc::create(this, callfunc_selector(NewYorkMap::loadMap)),
+                                 NULL));
+    
+    return true;
+}
+
+/**
+ @brief     Begin loading the map. Called after a delay to allow the loading popup to be added to the main scene.
+ */
+void NewYorkMap::loadMap()
+{
+    // Create a loading popup to track the loading progress.
+    CCSprite* border = CCSprite::create("loadingBorder.png");
+    ProgressBar* progressBar = ProgressBar::create("loadingProgress.png");
+    LoadingPopup* popup = LoadingPopup::showPopup(border, progressBar);
+    border->setPosition(ccp(WIN_SIZE.width/2, WIN_SIZE.height/2));
+    progressBar->setPosition(ccp(WIN_SIZE.width/2, WIN_SIZE.height*0.256f));
+    
     // Set up the image data for the map to load.
-    CompositeSprite* mapSprite = CompositeSprite::create("newYorkMap", ".png", 4, 5, NULL);
+    CompositeSprite* mapSprite = CompositeSprite::create("newYorkMap", ".png", 4, 5, popup);
     
     if (mapSprite)
     {
         addChild(mapSprite);
         mapSprite->setVisible(false);
         mapSprite->addObserver(this);
-        return true;
-    }
-    else
-    {
-        return false;
     }
 }
 

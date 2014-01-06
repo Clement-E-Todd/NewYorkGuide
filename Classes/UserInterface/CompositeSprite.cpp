@@ -147,6 +147,11 @@ void CompositeSprite::loadNextPiece()
         m_LoadingData.colomn++;
     }
     
+    // Update the loading popup
+    float totalSprites = m_LoadingData.gridWidth * m_LoadingData.gridHeight;
+    float loadedSprites = m_LoadingData.colomn*m_LoadingData.gridHeight + m_LoadingData.row;
+    m_LoadingData.loadingPopup->setProgress(loadedSprites/totalSprites);
+    
     // Load the next piece after a brief pause to allow for the UI to update.
     if (m_LoadingData.colomn < m_LoadingData.gridWidth)
     {
@@ -162,6 +167,7 @@ void CompositeSprite::loadNextPiece()
         {
             m_Observers[i]->compositeSpriteFinishedLoading(this);
         }
+        m_LoadingData.loadingPopup->closePopup();
         CCLOG("Finished loading CompositeSprite.");
     }
 }

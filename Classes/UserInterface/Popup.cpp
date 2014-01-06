@@ -189,3 +189,11 @@ void Popup::organizeContent()
                                     (1 - m_Buttons[i]->getAnchorPoint().y)));
     }
 }
+
+/**
+ @brief     Execute closing animations and remove the popup from the node tree.
+ */
+void Popup::closePopup()
+{
+    removeFromParentAndCleanup(true);
+}

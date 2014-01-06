@@ -43,6 +43,11 @@ public:
      */
     bool ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent) { return true; }
     
+    /**
+     @brief     Execute closing animations and remove the popup from the node tree.
+     */
+    void closePopup();
+    
 protected:
     
     /**
