@@ -47,10 +47,15 @@ void NewYorkMap::loadMap()
 {
     // Create a loading popup to track the loading progress.
     CCSprite* border = CCSprite::create("loadingBorder.png");
-    ProgressBar* progressBar = ProgressBar::create("loadingProgress.png");
-    LoadingPopup* popup = LoadingPopup::showPopup(border, progressBar);
     border->setPosition(ccp(WIN_SIZE.width/2, WIN_SIZE.height/2));
-    progressBar->setPosition(ccp(WIN_SIZE.width/2, WIN_SIZE.height*0.256f));
+    border->setScale(SCREEN_SCALE);
+    
+    ProgressBar* progressBar = ProgressBar::create("loadingProgress.png");
+    progressBar->setPosition(ccp(WIN_SIZE.width/2,
+                                 WIN_SIZE.height/2 - border->getContentSize().height*SCREEN_SCALE*0.389f));
+    progressBar->setScale(SCREEN_SCALE);
+    
+    LoadingPopup* popup = LoadingPopup::showPopup(border, progressBar);
     
     // Set up the image data for the map to load.
     CompositeSprite* mapSprite = CompositeSprite::create("newYorkMap", ".png", 4, 5, popup);
