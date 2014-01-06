@@ -12,6 +12,8 @@
 
 using namespace cocos2d;
 
+Popup* Popup::m_CurrentPopup = NULL;
+
 /**
  @brief     Create and add a popup to the current scene.
  @return    A pointer to the popup.
@@ -72,6 +74,13 @@ bool Popup::init()
     // Register this popup with the touch dispatcher so that it can block input to elements behind it.
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     
+    // If there is an existing popup already, remove it in favor of this one.
+    if (m_CurrentPopup)
+    {
+        m_CurrentPopup->removeFromParentAndCleanup(true);
+    }
+    m_CurrentPopup = this;
+    
     return true;
 }
 
@@ -82,6 +91,12 @@ void Popup::onExit()
 {
     // Unregister this Button from the touch dispatcher.
     CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+    
+    // Clear the static handle to the current popup.
+    if (m_CurrentPopup == this)
+    {
+        m_CurrentPopup = NULL;
+    }
     
     // Pass the onExit() call along to the base class.
     CCNode::onExit();
@@ -216,8 +231,6 @@ void Popup::closePopup()
         // Fade out children and their children etc.
         fadeOutAllDecendants(duration, rate, this);
     }
-    
-    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_cancel.wav");
     
     runAction(CCSequence::create(CCDelayTime::create(duration),
                                  CCCallFunc::create(this, callfunc_selector(Popup::removeFromParent)),

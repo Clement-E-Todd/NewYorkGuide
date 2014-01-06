@@ -65,6 +65,11 @@ protected:
      */
     void launchTicketWebsite();
     
+    /**
+     @brief     Play the closing sound and close the popup.
+     */
+    void closePopupWithSound();
+    
 private:
     
     // The Landmark data being presented by the popup

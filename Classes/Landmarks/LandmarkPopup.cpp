@@ -99,7 +99,7 @@ bool LandmarkPopup::init(Landmark landmark, cocos2d::CCPoint buttonPosition)
     }
     
     // Finally, add a button to close the popup.
-    addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::closePopup)), COLOUR_BUTTON_CLOSE);
+    addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::closePopupWithSound)), COLOUR_BUTTON_CLOSE);
     
     
     // For visual flare, do a nice fade-in and make the illusion of the image moving from the button to the popup.
@@ -167,4 +167,13 @@ void LandmarkPopup::launchTicketWebsite()
         WebLauncher::launchBrowserWithURL(m_Landmark.ticketsURL);
     }
     CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_up.wav");
+}
+
+/**
+ @brief     Play the closing sound and close the popup.
+ */
+void LandmarkPopup::closePopupWithSound()
+{
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->playEffect("button_cancel.wav");
+    closePopup();
 }

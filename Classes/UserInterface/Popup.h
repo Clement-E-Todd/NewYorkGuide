@@ -96,6 +96,9 @@ protected:
     // The node used for the semi-transparent backdrop
     cocos2d::CCSprite* m_Backdrop;
     
+    // A static handle to the current Popup (NULL if none)
+    static Popup* m_CurrentPopup;
+    
 };
 
 #endif // POPUP_H
