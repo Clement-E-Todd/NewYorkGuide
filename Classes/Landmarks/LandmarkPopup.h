@@ -21,26 +21,29 @@ public:
     
     /**
      @brief     Create an popup that displays the information from a specified landmark and add it to the current scene.
-     @param     landmark    The landmark whose info should be displayed.
+     @param     landmark        The landmark whose info should be displayed.
+     @param     buttonPosition  The position of the corresponding LandmarkButton (used for visual flare).
      @return    A pointer to the popup that is created.
      */
-    static LandmarkPopup* showPopup(Landmark landmark);
+    static LandmarkPopup* showPopup(Landmark landmark, cocos2d::CCPoint buttonPosition);
     
 protected:
     
     /**
      @brief     Create an popup that displays the information from a specified landmark.
      @param     landmark    The landmark whose info should be displayed.
+     @param     buttonPosition  The position of the corresponding LandmarkButton (used for visual flare).
      @return    A pointer to the popup that is created.
      */
-    static LandmarkPopup* create(Landmark landmark);
+    static LandmarkPopup* create(Landmark landmark, cocos2d::CCPoint buttonPosition);
     
     /**
      @brief     Initialize this LandmarkPopup with its Landmark info.
      @param     landmark    The landmark whose info should be displayed.
+     @param     buttonPosition  The position of the corresponding LandmarkButton (used for visual flare).
      @return    Whether or not the initialization was successful.
      */
-    bool init(Landmark landmark);
+    bool init(Landmark landmark, cocos2d::CCPoint buttonPosition);
     
     /**
      @brief Called when the popup is removed from the node tree.

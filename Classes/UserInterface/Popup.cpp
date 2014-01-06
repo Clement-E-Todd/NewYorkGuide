@@ -61,12 +61,12 @@ bool Popup::init()
     setContentSize(WIN_SIZE);
     
     // Add a semi-transparent black backdrop
-    CCSprite* backdrop = CCSprite::create("blankPixel.png");
-    addChild(backdrop);
-    backdrop->setAnchorPoint(CCPointZero);
-    backdrop->cocos2d::CCNode::setScale(getContentSize().width, getContentSize().height);
-    backdrop->setColor(ccBLACK);
-    backdrop->setOpacity(220);
+    m_Backdrop = CCSprite::create("blankPixel.png");
+    addChild(m_Backdrop);
+    m_Backdrop->setAnchorPoint(CCPointZero);
+    m_Backdrop->cocos2d::CCNode::setScale(getContentSize().width, getContentSize().height);
+    m_Backdrop->setColor(ccBLACK);
+    m_Backdrop->setOpacity(225);
     
     // Register this popup with the touch dispatcher so that it can block input to elements behind it.
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
@@ -195,5 +195,55 @@ void Popup::organizeContent()
  */
 void Popup::closePopup()
 {
-    removeFromParentAndCleanup(true);
+    const float duration = 0.3f;
+    const float rate = 2.75f;
+    
+    stopAllActions();
+    
+    for (int i = 0; i < getChildrenCount(); i++)
+    {
+        CCNode* child = ((CCNode*)getChildren()->objectAtIndex(i));
+        child->stopAllActions();
+        
+        // Drift children upwards as they fade out
+        if (child != m_Backdrop)
+        {
+            child->runAction(CCEaseOut::create(CCMoveBy::create(duration, ccp(0, WIN_SIZE.height*0.05f)), rate));
+        }
+        
+        // Fade out children and their children etc.
+        fadeOutAllDecendants(duration, rate, this);
+    }
+    
+    runAction(CCSequence::create(CCDelayTime::create(duration),
+                                 CCCallFunc::create(this, callfunc_selector(Popup::removeFromParent)),
+                                 NULL));
+}
+
+/**
+ @brief     Fade in the Popup and all of its decendants.
+ */
+void Popup::fadeInAllDecendants(float duration, float rate, CCNode* target)
+{
+    target->runAction(CCEaseOut::create(CCFadeIn::create(duration), rate));
+    
+    for (int i = 0; i < target->getChildrenCount(); i++)
+    {
+        CCNode* child = ((CCNode*)target->getChildren()->objectAtIndex(i));
+        fadeInAllDecendants(duration, rate, child);
+    }
+}
+
+/**
+ @brief     Fade out the Popup and all of its decendants.
+ */
+void Popup::fadeOutAllDecendants(float duration, float rate, CCNode* target)
+{
+    target->runAction(CCEaseOut::create(CCFadeOut::create(duration), rate));
+    
+    for (int i = 0; i < target->getChildrenCount(); i++)
+    {
+        CCNode* child = ((CCNode*)target->getChildren()->objectAtIndex(i));
+        fadeOutAllDecendants(duration, rate, child);
+    }
 }

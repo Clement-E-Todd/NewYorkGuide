@@ -21,9 +21,9 @@ using namespace cocos2d;
  @param     landmark    The landmark whose info should be displayed.
  @return    A pointer to the popup that is created.
  */
-LandmarkPopup* LandmarkPopup::showPopup(Landmark landmark)
+LandmarkPopup* LandmarkPopup::showPopup(Landmark landmark, cocos2d::CCPoint buttonPosition)
 {
-    LandmarkPopup* popup = create(landmark);
+    LandmarkPopup* popup = create(landmark, buttonPosition);
     
     if (popup)
     {
@@ -40,10 +40,10 @@ LandmarkPopup* LandmarkPopup::showPopup(Landmark landmark)
  @brief     Create a new Popup instance.
  @return    A pointer to the newly created Popup.
  */
-LandmarkPopup* LandmarkPopup::create(Landmark landmark)
+LandmarkPopup* LandmarkPopup::create(Landmark landmark, cocos2d::CCPoint buttonPosition)
 {
     LandmarkPopup *popup = new LandmarkPopup();
-    if (popup && popup->init(landmark))
+    if (popup && popup->init(landmark, buttonPosition))
     {
         popup->autorelease();
         return popup;
@@ -56,7 +56,7 @@ LandmarkPopup* LandmarkPopup::create(Landmark landmark)
  @brief     Initialize this Popup instance.
  @return    Whether or not initialization was successful.
  */
-bool LandmarkPopup::init(Landmark landmark)
+bool LandmarkPopup::init(Landmark landmark, cocos2d::CCPoint buttonPosition)
 {
     if (!Popup::init())
     {
@@ -99,6 +99,26 @@ bool LandmarkPopup::init(Landmark landmark)
     
     // Finally, add a button to close the popup.
     addButton("Close", CCCallFunc::create(this, callfunc_selector(LandmarkPopup::closePopup)), COLOUR_BUTTON_CLOSE);
+    
+    
+    // For visual flare, do a nice fade-in and make the illusion of the image moving from the button to the popup.
+    const float duration = 0.35f;
+    const float rate = 2.75f;
+    
+    GLubyte backdropOpacity = m_Backdrop->getOpacity();
+    fadeInAllDecendants(duration, rate, this);
+    m_Backdrop->stopAllActions();
+    m_Backdrop->setOpacity(0);
+    m_Backdrop->runAction(CCEaseOut::create(CCFadeTo::create(duration, backdropOpacity), rate));
+    
+    image->stopAllActions();
+    CCPoint imagePosition = image->getPosition();
+    float imageScale = image->getScale();
+    image->setPosition(buttonPosition);
+    image->setOpacity(255);
+    image->setScale(imageScale*0.375f);
+    image->runAction(CCMoveTo::create(duration, imagePosition));
+    image->runAction(CCScaleTo::create(duration, imageScale));
     
     return true;
 }

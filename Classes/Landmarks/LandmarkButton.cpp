@@ -178,5 +178,5 @@ void LandmarkButton::onTouchEnded()
     setZOrder(0);
     
     // Display the popup.
-    LandmarkPopup::showPopup(m_Landmark);
+    LandmarkPopup::showPopup(m_Landmark, convertToWorldSpaceAR(CCPointZero));
 }

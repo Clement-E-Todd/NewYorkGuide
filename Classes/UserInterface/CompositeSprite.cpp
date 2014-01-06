@@ -167,7 +167,13 @@ void CompositeSprite::loadNextPiece()
         {
             m_Observers[i]->compositeSpriteFinishedLoading(this);
         }
-        m_LoadingData.loadingPopup->closePopup();
+        
+        runAction(CCSequence::create(CCDelayTime::create(1.0f / 60),
+                                     CCCallFunc::create(m_LoadingData.loadingPopup, callfunc_selector(LoadingPopup::closePopup)),
+                                     NULL));
+        
+        unscheduleUpdate();
+        
         CCLOG("Finished loading CompositeSprite.");
     }
 }

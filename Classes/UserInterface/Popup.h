@@ -72,13 +72,24 @@ protected:
      */
     void organizeContent();
     
-private:
+    /**
+     @brief     Fade in the Popup and all of its decendants.
+     */
+    void fadeInAllDecendants(float duration, float rate, CCNode* target);
+    
+    /**
+     @brief     Fade out the Popup and all of its decendants.
+     */
+    void fadeOutAllDecendants(float duration, float rate, CCNode* target);
     
     // A list of all of the popup's normal contents (titles, text, images etc).
     std::vector<cocos2d::CCNode*> m_Contents;
     
     // A list of all of the popup's butons.
     std::vector<Button*> m_Buttons;
+    
+    // The node used for the semi-transparent backdrop
+    cocos2d::CCSprite* m_Backdrop;
     
 };
 
