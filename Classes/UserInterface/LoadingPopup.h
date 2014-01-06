@@ -71,6 +71,11 @@ protected:
      */
     bool init(cocos2d::CCSprite* borderSprite, ProgressBar* progressBar);
     
+    /**
+     @brief     Called when the node is removed fromt he node tree.
+     */
+    void onExit();
+    
 private:
     
     // The sprite which surrounds the progress bar.

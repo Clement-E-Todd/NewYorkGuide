@@ -66,6 +66,18 @@ bool LoadingPopup::init(CCSprite* borderSprite, ProgressBar* progressBar)
 }
 
 /**
+ @brief     Called when the node is removed fromt he node tree.
+ */
+void LoadingPopup::onExit()
+{
+    CCTextureCache* cache = CCTextureCache::sharedTextureCache();
+    cache->removeTexture(m_ProgressBar->getTexture());
+    cache->removeTexture(m_Border->getTexture());
+    
+    Popup::onExit();
+}
+
+/**
  @brief     Set the progress to be shown by the progress bar.
  */
 void LoadingPopup::setProgress(float progress)
